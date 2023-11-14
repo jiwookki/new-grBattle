@@ -18,7 +18,7 @@ font_data = ExtResource( 4 )
 [node name="Game" type="Node2D"]
 
 [node name="BackgroundDrawer" type="Node2D" parent="."]
-position = Vector2( -50, 0 )
+position = Vector2( -102, 0 )
 script = ExtResource( 8 )
 __meta__ = {
 "_edit_group_": true
@@ -47,13 +47,14 @@ text = "Ammo: "
 script = ExtResource( 3 )
 
 [node name="Delta1" type="Area2D" parent="."]
-position = Vector2( 505, 297 )
+position = Vector2( 498, 284 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
 player_speed = 400
+border_offset = 312
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Delta1"]
 shape = SubResource( 1 )
@@ -67,5 +68,6 @@ position = Vector2( 0, -10 )
 script = ExtResource( 5 )
 reload_time_seconds = 3.0
 shoot_cooldown_secs = 0.4
+shoot_speed = Vector2( 0, -2400 )
 
 [connection signal="update_ammo_count" from="Delta1/Gun" to="CanvasLayer/Label" method="_on_update_ammo"]

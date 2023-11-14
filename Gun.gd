@@ -11,10 +11,15 @@ export var reload_time_seconds: float
 
 export var shoot_cooldown_secs : float
 
+export var shoot_speed : Vector2
+
 var ammo = max_ammo
 
 var cooldown = 0
 
+var bullet_prefab : PackedScene
+
+var root : Node
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -33,6 +38,9 @@ func _shoot():
 		_reload()
 	else: 
 		cooldown = shoot_cooldown_secs
+	var newbullet = bullet_prefab.instance()
+	newbullet.startShoot(shoot_speed, global_position)
+	root.add_child(newbullet)
 	
 		
 func _process_cooldown(delta):
@@ -53,6 +61,8 @@ func _ready():
 	
 	emit_signal("update_ammo_count", ammo)
 	print("gun init")
+	bullet_prefab = preload("res://Bullet.tscn")
+	root = get_node("/root")
 		
 
 
