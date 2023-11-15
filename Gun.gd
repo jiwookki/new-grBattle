@@ -6,7 +6,7 @@ extends Node2D
 
 
 
-
+signal on_shot
 
 
 export var max_ammo = 8
@@ -52,7 +52,7 @@ func _shoot():
 
 func _force_shoot():
 		ammo -= 1
-		print("ammo:" + str(ammo))
+		emit_signal("on_shot")
 		_on_ammo_change(ammo)
 		if ammo <= 0:
 			_on_start_reload()
@@ -68,7 +68,6 @@ func _process_cooldown(delta):
 	if cooldown > 0:
 		cooldown -= delta
 	elif ammo == max_ammo + 1:
-		print("max")
 		ammo -= 1
 		_on_finish_reload()
 
