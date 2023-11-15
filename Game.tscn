@@ -1,19 +1,24 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=1]
 [ext_resource path="res://PlayerMovement.gd" type="Script" id=2]
-[ext_resource path="res://AmmoCounter.gd" type="Script" id=3]
+[ext_resource path="res://NumCounter.gd" type="Script" id=3]
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://PlayerGun.gd" type="Script" id=5]
 [ext_resource path="res://sprites/backdrop2.jpg" type="Texture" id=6]
 [ext_resource path="res://sprites/backdrop.PNG" type="Texture" id=7]
 [ext_resource path="res://BGRender.gd" type="Script" id=8]
-[ext_resource path="res://HealthCounter.gd" type="Script" id=9]
+[ext_resource path="res://audio/damaged.wav" type="AudioStream" id=9]
 [ext_resource path="res://Health.tscn" type="PackedScene" id=10]
 [ext_resource path="res://sprites/a.PNG" type="Texture" id=11]
 [ext_resource path="res://Enemy1Gun.gd" type="Script" id=12]
 [ext_resource path="res://Enemy1Movement.gd" type="Script" id=13]
 [ext_resource path="res://PlayerHealth.gd" type="Script" id=14]
+[ext_resource path="res://audio/invasion-1.wav" type="AudioStream" id=15]
+[ext_resource path="res://audio/lasershoot.wav" type="AudioStream" id=16]
+[ext_resource path="res://Enemy1Health.gd" type="Script" id=17]
+[ext_resource path="res://audio/boom.wav" type="AudioStream" id=18]
+[ext_resource path="res://Game.gd" type="Script" id=19]
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
@@ -31,6 +36,11 @@ font_data = ExtResource( 4 )
 extents = Vector2( 44, 47 )
 
 [node name="Game" type="Node2D"]
+script = ExtResource( 19 )
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 15 )
+autoplay = true
 
 [node name="BackgroundDrawer" type="Node2D" parent="."]
 position = Vector2( -102, 0 )
@@ -60,6 +70,7 @@ margin_bottom = 303.0
 custom_fonts/font = SubResource( 2 )
 text = "Ammo: "
 script = ExtResource( 3 )
+prefix = "Ammo: "
 
 [node name="ScoreCounter" type="Label" parent="CanvasLayer"]
 margin_left = 18.0
@@ -68,6 +79,8 @@ margin_right = 209.0
 margin_bottom = 122.0
 custom_fonts/font = SubResource( 4 )
 text = "Score:"
+script = ExtResource( 3 )
+prefix = "Score: "
 
 [node name="HealthDisp" type="Label" parent="CanvasLayer"]
 margin_left = 17.0
@@ -76,9 +89,10 @@ margin_right = 208.0
 margin_bottom = 355.0
 custom_fonts/font = SubResource( 2 )
 text = "Health:"
-script = ExtResource( 9 )
+script = ExtResource( 3 )
+prefix = "Health: "
 
-[node name="Delta1" type="Area2D" parent="."]
+[node name="Delta1" type="Area2D" parent="." groups=["player"]]
 position = Vector2( 498, 284 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
@@ -102,11 +116,19 @@ reload_time_seconds = 5.0
 shoot_cooldown_secs = 0.4
 shoot_speed = Vector2( 0, -2000 )
 
+[node name="ShootSounder" type="AudioStreamPlayer" parent="Delta1/Gun"]
+stream = ExtResource( 16 )
+bus = "SFX"
+
 [node name="Health" parent="Delta1" instance=ExtResource( 10 )]
 script = ExtResource( 14 )
-starting_health = 0
+starting_health = 4
 
-[node name="Enemy1" type="Area2D" parent="."]
+[node name="PlayerDamageSounder" type="AudioStreamPlayer" parent="Delta1/Health"]
+stream = ExtResource( 9 )
+bus = "SFX"
+
+[node name="Enemy1" type="Area2D" parent="." groups=["player_affectable"]]
 position = Vector2( 405, 98 )
 script = ExtResource( 13 )
 __meta__ = {
@@ -130,5 +152,15 @@ reload_time_seconds = 3.0
 shoot_cooldown_secs = 0.8
 shoot_speed = Vector2( 0, 1200 )
 
-[connection signal="update_ammo_count" from="Delta1/Gun" to="CanvasLayer/AmmoDisp" method="_on_update_ammo"]
-[connection signal="on_health_change" from="Delta1/Health" to="CanvasLayer/HealthDisp" method="_on_update_health"]
+[node name="Health" parent="Enemy1" instance=ExtResource( 10 )]
+script = ExtResource( 17 )
+
+[node name="DamageSounder" type="AudioStreamPlayer" parent="Enemy1/Health"]
+stream = ExtResource( 18 )
+bus = "SFX"
+
+[connection signal="score_changed" from="." to="CanvasLayer/ScoreCounter" method="on_update_value"]
+[connection signal="area_entered" from="Delta1" to="Delta1/Health" method="_on_Delta1_area_entered"]
+[connection signal="update_ammo_count" from="Delta1/Gun" to="CanvasLayer/AmmoDisp" method="on_update_value"]
+[connection signal="on_health_change" from="Delta1/Health" to="CanvasLayer/HealthDisp" method="on_update_value"]
+[connection signal="area_entered" from="Enemy1" to="Enemy1/Health" method="_on_Enemy1_area_entered"]

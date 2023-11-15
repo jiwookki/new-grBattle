@@ -14,6 +14,9 @@ __meta__ = {
 "_edit_group_": true
 }
 lifetime = 3.0
+damage = 1
+piercing = 1
+damaging_group = "player_affectable"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )
@@ -21,3 +24,5 @@ shape = SubResource( 3 )
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.791667, 0.833333 )
 texture = ExtResource( 1 )
+
+[connection signal="area_entered" from="." to="." method="_on_hit"]

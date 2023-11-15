@@ -14,9 +14,6 @@ export var starting_health  : int
 var health : int
 
 
-func _on_take_damage(dmg):
-	pass # override
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	health = starting_health
@@ -24,7 +21,7 @@ func _ready():
 
 func take_damage(dmg):
 	health -= dmg
-	_on_take_damage(dmg)
+	
 	
 	
 

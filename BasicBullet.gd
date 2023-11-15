@@ -7,8 +7,15 @@ extends Area2D
 
 export var lifetime : float
 
+export var damage : int
+
+export var piercing : int
+
+export var damaging_group : String
+
 var _velocity : Vector2
 var _current_lifetime = 0
+var _current_pierced = 0
 
 func startShoot(new_velocity, new_position):
 	_velocity = new_velocity
@@ -27,3 +34,9 @@ func _process(delta):
 	if _current_lifetime >= lifetime:
 		queue_free()
 	position += _velocity * delta
+
+func _on_hit(area):
+	if area.is_in_group(damaging_group):
+		_current_pierced += 1
+		if _current_pierced >= piercing:
+			queue_free()

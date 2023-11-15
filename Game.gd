@@ -1,22 +1,26 @@
-extends Label
+extends Node2D
 
 
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
 
-export var base_text = "Ammo: "
+signal score_changed
+
+
+export var score = 0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	text = base_text # Replace with function body.
+	emit_signal("score_changed", score)
+
+func change_score(score_delta):
+	score += score_delta
+	emit_signal("score_changed", score)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-
-func _on_update_ammo(newammo):
-	print(newammo)
-	text = base_text + str(newammo)

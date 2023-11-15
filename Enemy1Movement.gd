@@ -13,6 +13,7 @@ var player : Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node("/root/Game/Delta1")
+	print(player)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

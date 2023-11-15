@@ -5,23 +5,27 @@ extends HealthTracker
 # var a = 2
 # var b = "text"
 
-var damagesounder : AudioStreamPlayer
+var damageSounder: AudioStreamPlayer
 
 func take_damage(dmg):
-	damagesounder.play()
-	.take_damage(dmg)
-	emit_signal("on_health_change", health)
+	damageSounder.play()
+	health -= dmg
+	
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	damagesounder = get_node("./PlayerDamageSounder")
+	._ready()
+	damageSounder = get_node("./DamageSounder")
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+func die():
+	get_node("/root/Game").change_score(200)
+	.die()
 
-
-func _on_Delta1_area_entered(area):
-	if area.is_in_group("player_damager"):
+func _on_Enemy1_area_entered(area):
+	if area.is_in_group("player_bullet"):
 		take_damage(area.damage)

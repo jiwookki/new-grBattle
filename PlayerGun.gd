@@ -9,6 +9,12 @@ signal update_ammo_count
 # var b = "text"
 
 
+var shootSounder
+
+func _force_shoot():
+	shootSounder.play()
+	._force_shoot()
+
 func _on_start_reload():
 	emit_signal("update_ammo_count", "Reload")
 
@@ -26,6 +32,7 @@ func _ready():
 	print("gun init")
 	bullet_prefab = preload("res://Bullet.tscn")
 	root = get_node("/root")
+	shootSounder = get_node("./ShootSounder")
 		
 
 
