@@ -1,9 +1,13 @@
+
+
+class_name Gun
+
 extends Node2D
 
 
 
 
-signal update_ammo_count
+
 
 export var max_ammo = 8
 
@@ -26,21 +30,38 @@ var root : Node
 # var b = "text"
 
 
+func _on_ammo_change(newammo):
+	pass # override
+
+func _on_start_reload():
+	pass # override
+	
+func _on_finish_reload():
+	pass # override
+
+
+
 func _reload():
 	ammo = max_ammo + 1
 	cooldown = reload_time_seconds
-	emit_signal("update_ammo_count", "Reloading")
 
 func _shoot():
-	ammo -= 1
-	emit_signal("update_ammo_count", ammo)
-	if ammo <= 0:
-		_reload()
-	else: 
-		cooldown = shoot_cooldown_secs
-	var newbullet = bullet_prefab.instance()
-	newbullet.startShoot(shoot_speed, global_position)
-	root.add_child(newbullet)
+	if cooldown <= 0:
+		_force_shoot()
+
+
+func _force_shoot():
+		ammo -= 1
+		print("ammo:" + str(ammo))
+		_on_ammo_change(ammo)
+		if ammo <= 0:
+			_on_start_reload()
+			_reload()
+		else: 
+			cooldown = shoot_cooldown_secs
+		var newbullet = bullet_prefab.instance()
+		newbullet.startShoot(shoot_speed, global_position)
+		root.add_child(newbullet)
 	
 		
 func _process_cooldown(delta):
@@ -49,7 +70,7 @@ func _process_cooldown(delta):
 	elif ammo == max_ammo + 1:
 		print("max")
 		ammo -= 1
-		emit_signal("update_ammo_count", ammo)
+		_on_finish_reload()
 
 
 
@@ -58,18 +79,17 @@ func _process_cooldown(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	emit_signal("update_ammo_count", ammo)
-	print("gun init")
 	bullet_prefab = preload("res://Bullet.tscn")
 	root = get_node("/root")
 		
-
+		
+func _gun_process(delta):
+	pass # override 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	_gun_process(delta)
 	_process_cooldown(delta)
-	if Input.is_action_pressed("player_shoot") and cooldown <= 0:
-		_shoot()
+
 
 

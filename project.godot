@@ -8,6 +8,22 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "Node2D",
+"class": "Gun",
+"language": "GDScript",
+"path": "res://Gun.gd"
+}, {
+"base": "Node",
+"class": "HealthTracker",
+"language": "GDScript",
+"path": "res://HealthTracker.gd"
+} ]
+_global_script_class_icons={
+"Gun": "",
+"HealthTracker": ""
+}
+
 [application]
 
 config/name="gamma-ray-battle-demo"
