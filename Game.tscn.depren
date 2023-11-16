@@ -122,15 +122,6 @@ starting_health = 4
 stream = ExtResource( 9 )
 bus = "SFX"
 
-[node name="AsteroidSpawner" type="Node2D" parent="."]
-position = Vector2( 619, -236 )
-script = ExtResource( 20 )
-score = 100
-spawn_rate = 200
-spawn_x_min = 350
-spawn_x_max = 890
-enemy_scene = ExtResource( 12 )
-
 [node name="EnemySpawner" type="Node2D" parent="."]
 position = Vector2( 619, 101 )
 script = ExtResource( 20 )
@@ -139,6 +130,15 @@ spawn_rate = 240
 spawn_x_min = 350
 spawn_x_max = 890
 enemy_scene = ExtResource( 11 )
+
+[node name="AsteroidSpawner" type="Node2D" parent="."]
+position = Vector2( 619, -236 )
+script = ExtResource( 20 )
+score = 100
+spawn_rate = 200
+spawn_x_min = 350
+spawn_x_max = 890
+enemy_scene = ExtResource( 12 )
 
 [connection signal="score_changed" from="." to="CanvasLayer/ScoreCounter" method="on_update_value"]
 [connection signal="area_entered" from="Delta1" to="Delta1/Health" method="_on_Delta1_area_entered"]

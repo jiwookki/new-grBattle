@@ -27,7 +27,6 @@ func _ready():
 	_init_boundary()
 
 func on_player_shot():
-	print("dash")
 	if _dash_rng.randf() < dash_chance:
 		if player.position.x > position.x:
 			_dash_direction = -dash_speed

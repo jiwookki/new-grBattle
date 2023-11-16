@@ -23,7 +23,6 @@ func _ready():
 #func _process(delta):
 #	pass
 func die():
-	get_node("/root/Game").change_score(200)
 	.die()
 
 func _on_Enemy1_area_entered(area):

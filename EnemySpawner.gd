@@ -7,6 +7,8 @@ extends Node2D
 
 #Single enemy spawner. Will spawn only one enemy on screen at any given time.
 
+export var score : int
+
 export var spawn_rate : int
 
 export var spawn_x_min : int
@@ -19,15 +21,18 @@ var _nextSpawn : int
 var _spawning = true
 var _new_enemy
 var _root
+var _game_scorer
 
 func _on_enemy_death():
 	_spawning = true
 	_currentSpawn = 0
+	_game_scorer.change_score(score)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_nextSpawn = rng.randi_range(0, spawn_rate)
 	_root = get_node("/root")
+	_game_scorer = get_node("/root/Game")
 
 func _spawn():
 	_new_enemy = enemy_scene.instance()
