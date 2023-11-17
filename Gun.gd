@@ -79,7 +79,7 @@ func _process_cooldown(delta):
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	bullet_prefab = preload("res://Bullet.tscn")
-	root = get_node("/root")
+	root = get_node("/root/Game")
 		
 		
 func _gun_process(delta):

@@ -21,6 +21,7 @@ func _ready():
 func _process(delta):
 	position.y += fall_speed * delta
 	if position.y > _max_y:
+		emit_signal("tree_exiting", true)
 		queue_free()
 		
 

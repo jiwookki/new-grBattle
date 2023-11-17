@@ -8,19 +8,28 @@ extends Node2D
 signal score_changed
 
 
-export var score = 0
-
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	emit_signal("score_changed", score)
+	emit_signal("score_changed", ScoreManager.get_score())
 
 func change_score(score_delta):
-	score += score_delta
-	emit_signal("score_changed", score)
+	ScoreManager.change_score(score_delta)
+	
+	emit_signal("score_changed", ScoreManager.get_score())
 	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func on_game_over():
+	print("farewell")
+	get_node("./MusicPlayer").stop()
+	get_node("./Flasher").play("Die")
+
+
+func _show_game_over(anim_name):
+	get_tree().change_scene("res://mainscenes/GameOver.tscn")
+	queue_free()

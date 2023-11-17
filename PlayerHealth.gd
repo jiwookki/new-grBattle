@@ -16,6 +16,8 @@ func take_damage(dmg):
 func _ready():
 	damagesounder = get_node("./PlayerDamageSounder")
 
+func die():
+	get_node("/root/Game").on_game_over()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

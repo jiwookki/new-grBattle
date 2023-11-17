@@ -23,15 +23,16 @@ var _new_enemy
 var _root
 var _game_scorer
 
-func _on_enemy_death():
+func _on_enemy_death(scored = false):
 	_spawning = true
 	_currentSpawn = 0
-	_game_scorer.change_score(score)
+	if scored:
+		_game_scorer.change_score(score)
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_nextSpawn = rng.randi_range(0, spawn_rate)
-	_root = get_node("/root")
+	_root = get_node("/root/Game")
 	_game_scorer = get_node("/root/Game")
 
 func _spawn():
