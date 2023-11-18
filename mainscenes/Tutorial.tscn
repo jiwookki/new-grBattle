@@ -75,6 +75,7 @@ margin_left = 481.0
 margin_top = 369.0
 margin_right = 899.0
 margin_bottom = 530.0
+rect_scale = Vector2( 0.997092, 1.00242 )
 rect_pivot_offset = Vector2( 197, 129 )
 custom_fonts/font = SubResource( 3 )
 text = "Shoot down the aliens

@@ -27,9 +27,5 @@ func change_score(score_delta):
 func on_game_over():
 	print("farewell")
 	get_node("./MusicPlayer").stop()
-	get_node("./Flasher").play("Die")
-
-
-func _show_game_over(anim_name):
 	get_tree().change_scene("res://mainscenes/GameOver.tscn")
 	queue_free()
