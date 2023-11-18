@@ -17,8 +17,9 @@ func _ready():
 	._ready()
 	damageSounder = get_node("./DamageSounder")
 	
-
-
+func die():
+	if health <= 0:
+		.die()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass

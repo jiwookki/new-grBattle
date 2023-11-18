@@ -1,10 +1,12 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=2]
 [ext_resource path="res://MenuStarter.gd" type="Script" id=3]
 [ext_resource path="res://sprites/backdrop.PNG" type="Texture" id=4]
 [ext_resource path="res://audio/select.wav" type="AudioStream" id=5]
+[ext_resource path="res://sprites/a.PNG" type="Texture" id=6]
+[ext_resource path="res://mainscenes/TutorialViz.gd" type="Script" id=7]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -21,6 +23,23 @@ size = 32
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
+[sub_resource type="Animation" id=4]
+resource_name = "Pacing"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("AnimationPlayer/FakeEnemy:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 141, 194 ), Vector2( 341, 194 ), Vector2( 141, 194 ) ]
+}
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,23 +49,20 @@ position = Vector2( 239, 281 )
 scale = Vector2( 0.534722, 0.518056 )
 texture = ExtResource( 4 )
 
-[node name="Delta11" type="Sprite" parent="."]
-position = Vector2( 241, 294 )
-texture = ExtResource( 2 )
-
 [node name="Title" type="Label" parent="."]
-margin_left = 363.0
-margin_top = 18.0
-margin_right = 590.0
-margin_bottom = 83.0
+margin_left = 350.0
+margin_top = 13.0
+margin_right = 636.0
+margin_bottom = 78.0
 custom_fonts/font = SubResource( 1 )
-text = "Tutorial"
+text = "How to play"
 
 [node name="Title2" type="Label" parent="."]
-margin_left = 555.0
-margin_top = 152.0
-margin_right = 1106.0
-margin_bottom = 409.0
+margin_left = 484.0
+margin_top = 85.0
+margin_right = 769.0
+margin_bottom = 342.0
+rect_pivot_offset = Vector2( 197, 129 )
 custom_fonts/font = SubResource( 3 )
 text = "Use D-Pad or 
 WASD to move
@@ -54,16 +70,41 @@ WASD to move
 Press Space or 
 Cross to shoot"
 
+[node name="Title3" type="Label" parent="."]
+margin_left = 481.0
+margin_top = 369.0
+margin_right = 899.0
+margin_bottom = 530.0
+rect_pivot_offset = Vector2( 197, 129 )
+custom_fonts/font = SubResource( 3 )
+text = "Shoot down the aliens
+and avoid the falling 
+asteroids"
+
 [node name="Start" type="Label" parent="."]
-margin_left = 527.0
-margin_top = 457.0
-margin_right = 852.0
-margin_bottom = 506.0
+margin_left = 51.0
+margin_top = 483.0
+margin_right = 428.0
+margin_bottom = 532.0
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Press any button to start"
+text = "Press Space or Cross to start"
 script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
 autoplay = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "Pacing"
+anims/Pacing = SubResource( 4 )
+
+[node name="FakeEnemy" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 287.635, 194 )
+texture = ExtResource( 6 )
+
+[node name="Delta12" type="Sprite" parent="AnimationPlayer"]
+position = Vector2( 237, 372 )
+texture = ExtResource( 2 )
+script = ExtResource( 7 )
+viz_displacement = 30

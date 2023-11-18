@@ -5,7 +5,7 @@ extends Area2D
 # var a = 2
 # var b = "text"
 
-
+signal on_despawn
 
 export var border_offset = 362
 export var border_x = 612

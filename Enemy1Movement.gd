@@ -5,6 +5,7 @@ extends "res://GameMovObj.gd"
 # var a = 2
 # var b = "text"
 
+
 export var speed : float
 export var max_offset : float
 
@@ -51,4 +52,4 @@ func _process(delta):
 
 
 func _on_death():
-	emit_signal("tree_exiting", true)
+	emit_signal("on_despawn", true)
