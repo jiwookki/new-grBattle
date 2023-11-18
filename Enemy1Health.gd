@@ -22,8 +22,6 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-func die():
-	.die()
 
 func _on_Enemy1_area_entered(area):
 	if area.is_in_group("player_bullet"):

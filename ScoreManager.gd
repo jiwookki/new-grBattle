@@ -17,6 +17,9 @@ func get_score():
 	
 func change_score(score_delta):
 	score += score_delta
+	
+func reset_score():
+	score = 0
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):

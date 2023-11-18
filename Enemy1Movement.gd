@@ -48,3 +48,7 @@ func _process(delta):
 		_dash_cycle -= delta
 	_keep_boundary()
 			
+
+
+func _on_death():
+	emit_signal("tree_exiting", true)
