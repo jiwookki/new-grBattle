@@ -29,6 +29,7 @@ _global_script_class_icons={
 config/name="Gamma Ray Battle Demo"
 run/main_scene="res://mainscenes/Main.tscn"
 config/icon="res://icon-128.png"
+config/windows_native_icon="res://icon-128.ico"
 
 [autoload]
 
