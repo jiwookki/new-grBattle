@@ -27,5 +27,11 @@ func change_score(score_delta):
 func on_game_over():
 	print("farewell")
 	get_node("./MusicPlayer").stop()
+	get_node("./FadeOut").play("FadeOut")
+	
+
+
+
+func faded_out(anim_name):
 	get_tree().change_scene("res://mainscenes/GameOver.tscn")
 	queue_free()

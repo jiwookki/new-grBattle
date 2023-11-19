@@ -52,4 +52,5 @@ func _process(delta):
 
 
 func _on_death():
-	emit_signal("on_despawn", true)
+	if get_node("./Health").health <= 0:
+		emit_signal("on_despawn", true)
