@@ -13,11 +13,14 @@ export var knockback : int
 
 export var damage : int
 
+var blockSound
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	_init_boundary()
 	minY = -200
 	maxY = get_viewport_rect().size.y + get_node("./Sprite").texture.get_height() / 2
+	blockSound = get_node("./AsteroidBlockSound")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,3 +40,4 @@ func _on_Asteroid_area_entered(area):
 	elif area.is_in_group("player_bullet"):
 		print("knocked")
 		position.y -= knockback
+		blockSound.play()

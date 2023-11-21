@@ -18,6 +18,8 @@ func _ready():
 
 func die():
 	get_node("/root/Game").on_game_over()
+	queue_free()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
