@@ -1,22 +1,23 @@
 [gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=1]
-[ext_resource path="res://PlayerMovement.gd" type="Script" id=2]
-[ext_resource path="res://NumCounter.gd" type="Script" id=3]
+[ext_resource path="res://scripts/player/PlayerMovement.gd" type="Script" id=2]
+[ext_resource path="res://scripts/ui/NumCounter.gd" type="Script" id=3]
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://PlayerGun.gd" type="Script" id=5]
+[ext_resource path="res://scripts/player/PlayerGun.gd" type="Script" id=5]
 [ext_resource path="res://sprites/backdrop2.jpg" type="Texture" id=6]
 [ext_resource path="res://sprites/backdrop.PNG" type="Texture" id=7]
-[ext_resource path="res://BGRender.gd" type="Script" id=8]
+[ext_resource path="res://scripts/BGRender.gd" type="Script" id=8]
 [ext_resource path="res://audio/damaged.wav" type="AudioStream" id=9]
-[ext_resource path="res://Health.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Enemy1.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Asteroid.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/Health.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/Enemy1.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/Asteroid.tscn" type="PackedScene" id=12]
 [ext_resource path="res://audio/invasion-1.mp3" type="AudioStream" id=13]
-[ext_resource path="res://PlayerHealth.gd" type="Script" id=14]
+[ext_resource path="res://scripts/player/PlayerHealth.gd" type="Script" id=14]
+[ext_resource path="res://scenes/Bullet.tscn" type="PackedScene" id=15]
 [ext_resource path="res://audio/lasershoot.wav" type="AudioStream" id=16]
-[ext_resource path="res://Game.gd" type="Script" id=19]
-[ext_resource path="res://EnemySpawner.gd" type="Script" id=20]
+[ext_resource path="res://scripts/Game.gd" type="Script" id=19]
+[ext_resource path="res://scripts/EnemySpawner.gd" type="Script" id=20]
 
 [sub_resource type="Animation" id=5]
 resource_name = "FadeOut"
@@ -43,8 +44,6 @@ size = 36
 outline_size = 5
 outline_color = Color( 0, 0.32549, 0.192157, 1 )
 font_data = ExtResource( 4 )
-
-[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 19 )
@@ -112,8 +111,8 @@ scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 player_speed = 400
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Delta1"]
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Delta1"]
+polygon = PoolVector2Array( 10, 5, 10, 7.33333, 0, 10, -10, 7.66666, -10, 5, -7, -2.33334, 0, -11, 7, -2.33334 )
 
 [node name="Sprite" type="Sprite" parent="Delta1"]
 scale = Vector2( 0.25, 0.25 )
@@ -124,7 +123,9 @@ position = Vector2( 0, -10 )
 script = ExtResource( 5 )
 reload_time_seconds = 5.0
 shoot_cooldown_secs = 0.4
-shoot_speed = Vector2( 0, -2000 )
+shoot_speed = 2200.0
+shoot_direction = Vector2( 0, 1 )
+bullet_prefab = ExtResource( 15 )
 
 [node name="ShootSounder" type="AudioStreamPlayer" parent="Delta1/Gun"]
 stream = ExtResource( 16 )

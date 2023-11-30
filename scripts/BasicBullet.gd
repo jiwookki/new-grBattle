@@ -20,6 +20,7 @@ var _current_pierced = 0
 func startShoot(new_velocity, new_position):
 	_velocity = new_velocity
 	position = new_position
+	rotation = -new_velocity.angle_to(Vector2.UP)
 	
 
 # Called when the node enters the scene tree for the first time.

@@ -1,4 +1,4 @@
-extends "res://GameMovObj.gd"
+extends "res://scripts/GameMovObj.gd"
 
 
 # Declare member variables here. Examples:
@@ -23,6 +23,7 @@ func _process(delta):
 	_velocity = Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down") * player_speed * delta
 	position.x += _velocity.x
 	position.y += _velocity.y
+	rotation = -(get_global_mouse_position() - position).angle_to(Vector2.UP)
 	_keep_boundary()
 	
 

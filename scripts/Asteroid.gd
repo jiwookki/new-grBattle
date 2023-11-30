@@ -1,4 +1,4 @@
-extends "res://GameMovObj.gd"
+extends "res://scripts/GameMovObj.gd"
 
 
 # Declare member variables here. Examples:
