@@ -1,13 +1,10 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/PlayerMovement.gd" type="Script" id=2]
 [ext_resource path="res://scripts/ui/NumCounter.gd" type="Script" id=3]
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/player/PlayerGun.gd" type="Script" id=5]
-[ext_resource path="res://sprites/backdrop2.jpg" type="Texture" id=6]
-[ext_resource path="res://sprites/backdrop.PNG" type="Texture" id=7]
-[ext_resource path="res://scripts/BGRender.gd" type="Script" id=8]
 [ext_resource path="res://audio/damaged.wav" type="AudioStream" id=9]
 [ext_resource path="res://scenes/Health.tscn" type="PackedScene" id=10]
 [ext_resource path="res://scenes/Enemy1.tscn" type="PackedScene" id=11]
@@ -37,6 +34,7 @@ tracks/0/keys = {
 
 [sub_resource type="DynamicFont" id=2]
 size = 48
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -54,56 +52,45 @@ anims/FadeOut = SubResource( 5 )
 [node name="CanvasModulate" type="CanvasModulate" parent="FadeOut"]
 
 [node name="Control" type="Control" parent="."]
-margin_right = 329.0
+margin_right = 977.0
 margin_bottom = 539.0
 
-[node name="AmmoDisp" type="Label" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="Control"]
 margin_left = 19.0
-margin_top = 252.0
-margin_right = 210.0
-margin_bottom = 303.0
+margin_top = 462.0
+margin_right = 586.0
+margin_bottom = 533.0
+color = Color( 0, 0, 0, 0.423529 )
+
+[node name="AmmoDisp" type="Label" parent="Control"]
+margin_left = 308.0
+margin_top = 472.0
+margin_right = 499.0
+margin_bottom = 523.0
 custom_fonts/font = SubResource( 2 )
 text = "Ammo: "
 script = ExtResource( 3 )
 prefix = "Ammo: "
 
 [node name="ScoreCounter" type="Label" parent="Control"]
-margin_left = 18.0
-margin_top = 71.0
-margin_right = 209.0
-margin_bottom = 122.0
+margin_left = 21.0
+margin_top = 14.0
+margin_right = 212.0
+margin_bottom = 65.0
 custom_fonts/font = SubResource( 4 )
 text = "Score:"
 script = ExtResource( 3 )
 prefix = "Score: "
 
 [node name="HealthDisp" type="Label" parent="Control"]
-margin_left = 17.0
-margin_top = 304.0
-margin_right = 208.0
-margin_bottom = 355.0
+margin_left = 34.0
+margin_top = 474.0
+margin_right = 225.0
+margin_bottom = 525.0
 custom_fonts/font = SubResource( 2 )
 text = "Health:"
 script = ExtResource( 3 )
 prefix = "Health: "
-
-[node name="BackgroundDrawer" type="Node2D" parent="."]
-position = Vector2( -102, 0 )
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_group_": true
-}
-scrollSpeed = 600
-
-[node name="BG1" type="Sprite" parent="BackgroundDrawer"]
-position = Vector2( 718, -306 )
-scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 6 )
-
-[node name="BG2" type="Sprite" parent="BackgroundDrawer"]
-position = Vector2( 718, 306 )
-scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 7 )
 
 [node name="Delta1" type="Area2D" parent="." groups=["player"]]
 position = Vector2( 498, 284 )

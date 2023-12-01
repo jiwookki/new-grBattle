@@ -44,6 +44,13 @@ tracks/0/keys = {
 anchor_right = 1.0
 anchor_bottom = 1.0
 
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_left = -35.0
+margin_top = -22.0
+margin_right = 1050.0
+margin_bottom = 607.0
+color = Color( 0, 0, 0, 1 )
+
 [node name="Backdrop" type="Sprite" parent="."]
 position = Vector2( 239, 281 )
 scale = Vector2( 0.534722, 0.518056 )
