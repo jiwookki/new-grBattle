@@ -7,13 +7,10 @@ extends Area2D
 
 signal on_despawn
 
-export var border_offset = 362
-export var border_x = 612
-
-var minX: int
-var maxX: int
-var minY: int
-var maxY: int
+var minX = -1000
+var maxX = 1000
+var minY = -1000
+var maxY = 1000
 
 
 func _get_self_sprite():
@@ -21,15 +18,7 @@ func _get_self_sprite():
 
 # Called when the node enters the scene tree for the first time.
 func _init_boundary():
-	var _objSprite = _get_self_sprite()
-	minX = border_offset + _objSprite.texture.get_width()/2
-	maxX = border_offset + border_x - _objSprite.texture.get_width()/2 
-	minY = _objSprite.texture.get_height()/2
-	maxY = - _objSprite.texture.get_height()/2 + get_viewport_rect().size.y
-	print(str(minX))
-	print(str(maxX))
-	print(str(minY))
-	print(str(maxY))
+	pass
 	
 
 
