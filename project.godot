@@ -9,7 +9,7 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "Node2D",
+"base": "Reference",
 "class": "Gun",
 "language": "GDScript",
 "path": "res://scripts/Gun.gd"
@@ -31,7 +31,7 @@ config/description="Best game guaranteed hours of \"enjoyment\"
 "
 run/main_scene="res://mainscenes/Main.tscn"
 boot_splash/bg_color=Color( 0.231373, 0.231373, 0.231373, 1 )
-config/icon="res://icon-128.png"
+config/icon="res://icon128.png"
 config/windows_native_icon="res://icon-128.ico"
 
 [autoload]
