@@ -4,6 +4,7 @@ extends Gun
 
 signal update_ammo_count
 
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -13,6 +14,7 @@ var shootSounder
 
 func _force_shoot():
 	shootSounder.play()
+	shoot_direction = (get_global_mouse_position() - global_position).normalized()
 	._force_shoot()
 
 func _on_start_reload():
@@ -30,7 +32,6 @@ func _ready():
 	
 	emit_signal("update_ammo_count", ammo)
 	print("gun init")
-	bullet_prefab = preload("res://Bullet.tscn")
 	root = get_node("/root")
 	shootSounder = get_node("./ShootSounder")
 		
@@ -40,5 +41,4 @@ func _ready():
 func _gun_process(delta):
 	if Input.is_action_just_pressed("player_shoot"):
 		_shoot()
-
 
