@@ -4,6 +4,8 @@ import random
 
 # auto gen tiling star background 
 
+pygame.display.init()
+
 class CelestialObject():
 
     def __init__(self, size : pygame.math.Vector2):
@@ -24,6 +26,31 @@ class CircularStar(CelestialObject):
         pygame.draw.circle(render_target, self.color, position, self.radius)
 
 
+class ImageStar(CelestialObject):
+    
+    def __init__(self, filename,  scale_factor = 1):
+        self.image = pygame.image.load(filename)
+        self.image = self.image.convert_alpha()
+        if scale_factor != 1:
+            self.image = pygame.transform.smoothscale(self.image, (self.image.get_width() * scale_factor, self.image.get_height() * scale_factor))
+        self.size = pygame.math.Vector2(self.image.get_width(), self.image.get_height())
+    
+    def render(self, render_target : pygame.Surface, position):
+        render_target.blit(self.image, position)
+
+class RandomizedImageStar(CelestialObject):
+    
+    def __init__(self, filename,  scale_factor = 1):
+        self.image = pygame.image.load(filename)
+        self.image = self.image.convert_alpha()
+        if scale_factor != 1:
+            self.image = pygame.transform.smoothscale(self.image, (self.image.get_width() * scale_factor, self.image.get_height() * scale_factor))
+        
+        self.size = pygame.math.Vector2(self.image.get_width(), self.image.get_height())
+    
+    def render(self, render_target : pygame.Surface, position):
+        self.image = pygame.transform.rotate(self.image, random.randint(0, 360))
+        render_target.blit(self.image, position)
 
 
 # !!! CONFIGURABLES !!!
@@ -45,18 +72,26 @@ class CircularStar(CelestialObject):
 
 # STARCOUNT = 200
 
+# STARS = {
+#     CircularStar(1, [255, 255, 255]) : 500,
+#     CircularStar(2, [255, 255, 255]) : 300,
+# }
+
+screen = pygame.display.set_mode((640, 480))
+
 STARS = {
-    CircularStar(2, [255, 255, 255]) : 14,
-    CircularStar(3, [200, 200, 255]) : 10, 
-    CircularStar(5, [255, 100, 100]) : 1, 
-    CircularStar(7, [180, 180, 255]) : 2, 
-}
+    RandomizedImageStar("blackhole.png", 2) : 1,
+    RandomizedImageStar("nebula_1.PNG", 2) : 1,
+    RandomizedImageStar("nebula_2.png", 4) : 1,
+    RandomizedImageStar("redgiant1.png", 3) : 1,
+ }
 
 SIZE = [4192, 4192]
 
-FILENAME = "output_2.BMP"
+FILENAME = "layer_3.BMP"
 
-STARCOUNT = 900
+STARCOUNT = 20
+
 
 
 
@@ -91,7 +126,7 @@ def select_star():
 def main():
     output_surface = pygame.Surface(SIZE)
     output_surface.fill([0, 0, 0])
-    output_surface.set_colorkey([0, 0, 0])
+    #output_surface.set_colorkey([0, 0, 0])
 
 
     chosen_star = None
@@ -99,7 +134,7 @@ def main():
     for x in range(0, STARCOUNT):
         print("\nselecting star")
         chosen_star = select_star()
-        chosen_star.render(output_surface, [random.randint(0, SIZE[0]), random.randint(0, SIZE[1])])
+        chosen_star.render(output_surface, [random.randint(chosen_star.size[0], SIZE[0] - chosen_star.size[0]), random.randint(chosen_star.size[1], SIZE[1] - chosen_star.size[1])])
     
     print("writing surface")
 

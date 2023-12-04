@@ -7,10 +7,10 @@ extends Area2D
 
 signal on_despawn
 
-var minX = -1000
-var maxX = 1000
-var minY = -1000
-var maxY = 1000
+var minX = -5000
+var maxX = 5000
+var minY = -5000
+var maxY = 5000
 
 
 func _get_self_sprite():

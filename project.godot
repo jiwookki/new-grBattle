@@ -29,7 +29,7 @@ _global_script_class_icons={
 config/name="Gamma Ray Battle Demo"
 config/description="Best game guaranteed hours of \"enjoyment\"
 "
-run/main_scene="res://mainscenes/Main.tscn"
+run/main_scene="res://mainscenes/Game.tscn"
 boot_splash/bg_color=Color( 0.231373, 0.231373, 0.231373, 1 )
 config/icon="res://icon128.png"
 config/windows_native_icon="res://icon-128.ico"
