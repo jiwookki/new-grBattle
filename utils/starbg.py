@@ -72,28 +72,49 @@ class RandomizedImageStar(CelestialObject):
 
 # STARCOUNT = 200
 
-# STARS = {
-#     CircularStar(1, [255, 255, 255]) : 500,
-#     CircularStar(2, [255, 255, 255]) : 300,
-# }
+STARS = {
+    CircularStar(1, [120, 120, 120]) : 2,
+    CircularStar(2, [255, 255, 255]) : 1,
+    CircularStar(2, [80, 80, 80]) : 4,
+}
 
 screen = pygame.display.set_mode((640, 480))
 
 STARS = {
-    RandomizedImageStar("blackhole.png", 2) : 1,
-    RandomizedImageStar("nebula_1.PNG", 2) : 1,
-    RandomizedImageStar("nebula_2.png", 4) : 1,
-    RandomizedImageStar("redgiant1.png", 3) : 1,
+    ImageStar("blackhole.png", 2) : 1,
+    ImageStar("nebula_1.PNG", 2) : 1,
+    ImageStar("nebula_2.png", 4) : 1,
+    ImageStar("redgiant1.png", 3) : 1,
+    ImageStar("bigblackhole_2.png", 2) : 1,
+    ImageStar("bigblackhole_3.png", 2) : 1,
+    ImageStar("bigstar.png", 2) : 1,
+    ImageStar("biggalaxy1.png", 2) : 1,
+    ImageStar("bigplanet1.png", 2) : 1,
+    ImageStar("blackhole.png", 1) : 2,
+    ImageStar("nebula_1.PNG", 1) : 2,
+    ImageStar("nebula_2.png", 2) : 2,
+    ImageStar("redgiant1.png", 2) : 2,
+    ImageStar("bigblackhole_2.png", 1) : 2,
+    ImageStar("bigblackhole_3.png", 1) : 2,
+    ImageStar("bigstar.png", 1) : 2,
+    ImageStar("biggalaxy1.png", 1) : 2,
+    ImageStar("bigplanet1.png", 1) : 2,
+    CircularStar(2, [255, 255, 255]) : 300, 
+    CircularStar(1, [255, 255, 255]) : 300, 
  }
+
+
+
 
 SIZE = [4192, 4192]
 
-FILENAME = "layer_3.BMP"
+FILENAME = "layer_4.BMP"
 
-STARCOUNT = 20
+STARCOUNT = 200
 
+FORCE_NO_OVERLAP = True
 
-
+OVERLAP_EXCLUDE = [CircularStar]
 
 
 
@@ -124,9 +145,11 @@ def select_star():
 
 
 def main():
+    rendered_stars = [] # list of pygame.Rect
+    temp_position = []
     output_surface = pygame.Surface(SIZE)
     output_surface.fill([0, 0, 0])
-    #output_surface.set_colorkey([0, 0, 0])
+    output_surface.set_colorkey([0, 0, 0])
 
 
     chosen_star = None
@@ -134,7 +157,28 @@ def main():
     for x in range(0, STARCOUNT):
         print("\nselecting star")
         chosen_star = select_star()
-        chosen_star.render(output_surface, [random.randint(chosen_star.size[0], SIZE[0] - chosen_star.size[0]), random.randint(chosen_star.size[1], SIZE[1] - chosen_star.size[1])])
+        if FORCE_NO_OVERLAP:
+            looking = 0
+            while looking < 10000:
+                print(f"searching for available position: {str(x)}")
+
+                temp_position = [random.randint(0, SIZE[0] - chosen_star.size[0]), random.randint(0, SIZE[1] - chosen_star.size[1])]
+
+                if pygame.Rect(temp_position, chosen_star.size).collidelist(rendered_stars) == -1:
+                    
+                    break
+                else:
+                    looking += 1
+
+            if type(rendered_stars) not in OVERLAP_EXCLUDE:
+                print("excluding")
+                rendered_stars.append(pygame.Rect(temp_position, chosen_star.size))
+            
+            chosen_star.render(output_surface, temp_position)
+
+            
+        else:
+            chosen_star.render(output_surface, [random.randint(0, SIZE[0] - chosen_star.size[0]), random.randint(0, SIZE[1] - chosen_star.size[1])])
     
     print("writing surface")
 
