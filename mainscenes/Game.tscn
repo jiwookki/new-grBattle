@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/PlayerMovement.gd" type="Script" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://scripts/Game.gd" type="Script" id=19]
 [ext_resource path="res://scripts/EnemySpawner.gd" type="Script" id=20]
 [ext_resource path="res://sprites/layer_5.BMP" type="Texture" id=21]
+[ext_resource path="res://mainscenes/PosTracker.gd" type="Script" id=22]
 
 [sub_resource type="DynamicFont" id=2]
 size = 36
@@ -74,7 +75,7 @@ margin_bottom = 460.768
 [node name="ColorRect" type="ColorRect" parent="UIDraw/HUD"]
 margin_left = 7.0
 margin_top = 490.0
-margin_right = 686.0
+margin_right = 957.0
 margin_bottom = 538.0
 color = Color( 0, 0, 0, 0.423529 )
 
@@ -119,6 +120,15 @@ value = 50.0
 percent_visible = false
 script = ExtResource( 6 )
 
+[node name="PlayerPosDisp" type="Label" parent="UIDraw/HUD"]
+margin_left = 550.0
+margin_top = 494.0
+margin_right = 741.0
+margin_bottom = 545.0
+custom_fonts/font = SubResource( 2 )
+text = "(1000, 1000)"
+script = ExtResource( 22 )
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground"]
@@ -126,7 +136,7 @@ motion_scale = Vector2( 0.15, 0.15 )
 motion_mirroring = Vector2( 4192, 4192 )
 
 [node name="layer5" type="Sprite" parent="ParallaxBackground/ParallaxLayer5"]
-position = Vector2( 126, 202 )
+position = Vector2( 109, 220 )
 texture = ExtResource( 21 )
 
 [node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground"]
