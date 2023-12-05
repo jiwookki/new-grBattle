@@ -18,7 +18,7 @@ var _dash_cycle = 0
 var _dash_direction = 0
 var _dash_rng = RandomNumberGenerator.new()
 
-var player : Area2D
+var player : RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
