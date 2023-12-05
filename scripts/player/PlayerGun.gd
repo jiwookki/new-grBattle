@@ -9,12 +9,13 @@ signal update_ammo_count
 # var a = 2
 # var b = "text"
 
+var player
 
 var shootSounder
 
 func _force_shoot():
 	shootSounder.play()
-	shoot_direction = (get_global_mouse_position() - global_position).normalized()
+	shoot_direction = Vector2.UP.rotated(player.rotation)
 	._force_shoot()
 
 func _on_start_reload():
@@ -34,6 +35,7 @@ func _ready():
 	print("gun init")
 	root = get_node("/root")
 	shootSounder = get_node("./ShootSounder")
+	player = get_node("../")
 		
 
 

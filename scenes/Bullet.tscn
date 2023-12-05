@@ -6,23 +6,15 @@
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7, 10 )
 
-[node name="Bullet" type="Area2D" groups=["player_bullet"]]
-position = Vector2( 505, 254 )
-scale = Vector2( 1.5, 1.5 )
+[node name="Bullet" type="KinematicBody2D"]
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
-lifetime = 3.0
+lifetime = 5.0
 damage = 1
 piercing = 1
-damaging_group = "player_affectable"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 0.791667, 0.833333 )
 texture = ExtResource( 1 )
 
-[connection signal="area_entered" from="." to="." method="_on_hit"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 3 )

@@ -1,4 +1,4 @@
- extends KinematicBody2D
+extends RigidBody2D
 
 
 # Declare member variables here. Examples:
@@ -29,11 +29,11 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
+func _process(delta):
 	_current_lifetime += delta
 	if _current_lifetime >= lifetime:
 		queue_free()
-	move_and_slide(_velocity)
+	position += _velocity * delta
 
 func _on_hit(area):
 	if area.is_in_group(damaging_group):
