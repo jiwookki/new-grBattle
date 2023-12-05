@@ -211,7 +211,7 @@ linear_damp = 0.0
 angular_damp = 20.0
 script = ExtResource( 2 )
 speed = 500.0
-turn_speed = 4000.0
+turn_speed = 8000.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Delta1"]
 remote_path = NodePath("../../Camera2D")
