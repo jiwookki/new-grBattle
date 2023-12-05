@@ -19,8 +19,10 @@ func _ready():
 func _get_target_angle_delta():
 	delta_angle = -rotation-(get_global_mouse_position() - position).angle_to(Vector2.UP)
 	if abs(delta_angle) > PI:
-		print(delta_angle)
-		return TAU - delta_angle
+		if delta_angle > 0:
+			return delta_angle - TAU
+		else:
+			return delta_angle + TAU
 	else:
 		return delta_angle
 
