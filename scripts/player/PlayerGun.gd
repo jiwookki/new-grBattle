@@ -9,9 +9,14 @@ signal update_ammo_count
 # var a = 2
 # var b = "text"
 
-var player
+var player : RigidBody2D
 
 var shootSounder
+
+var physicsdeltaTime
+
+func _launch_bullet(newbullet):
+	newbullet.startShoot(shoot_speed * shoot_direction + player.linear_velocity, global_position, player.rotation)
 
 func _force_shoot():
 	shootSounder.play()
@@ -43,4 +48,7 @@ func _ready():
 func _gun_process(delta):
 	if Input.is_action_pressed("player_shoot"):
 		_shoot()
+		
+func _physics_process(delta):
+	physicsdeltaTime = delta
 

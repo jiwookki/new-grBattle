@@ -1,4 +1,4 @@
- extends KinematicBody2D
+ extends RigidBody2D
 
 
 # Declare member variables here. Examples:
@@ -17,10 +17,13 @@ var _velocity : Vector2
 var _current_lifetime = 0
 var _current_pierced = 0
 
-func startShoot(new_velocity, new_position):
+func startShoot(new_velocity, new_position, new_angle):
+	linear_velocity = new_velocity
 	_velocity = new_velocity
 	position = new_position
-	rotation = -new_velocity.angle_to(Vector2.UP)
+	linear_velocity = new_velocity
+	
+	rotation = new_angle
 	
 
 # Called when the node enters the scene tree for the first time.
@@ -33,10 +36,11 @@ func _physics_process(delta):
 	_current_lifetime += delta
 	if _current_lifetime >= lifetime:
 		queue_free()
-	move_and_slide(_velocity)
 
 func _on_hit(area):
 	if area.is_in_group(damaging_group):
 		_current_pierced += 1
+		linear_velocity = _velocity
+		
 		if _current_pierced >= piercing:
 			queue_free()

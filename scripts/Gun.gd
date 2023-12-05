@@ -25,8 +25,9 @@ var ammo = max_ammo
 
 var cooldown = 0
 
-
 var root : Node
+
+var newBullets = 0
 
 
 
@@ -55,6 +56,9 @@ func _shoot():
 		_force_shoot()
 
 
+func _launch_bullet(newbullet):
+	newbullet.startShoot(shoot_speed * shoot_direction, global_position, Vector2.UP.angle_to(shoot_direction))
+
 func _force_shoot():
 		ammo -= 1
 		emit_signal("on_shot")
@@ -64,10 +68,9 @@ func _force_shoot():
 			_reload()
 		else: 
 			cooldown = shoot_cooldown_secs
-		var newbullet = bullet_prefab.instance()
-		newbullet.startShoot(shoot_speed * shoot_direction, global_position)
-		root.add_child(newbullet)
-	
+		newBullets += 1
+
+
 		
 func _process_cooldown(delta):
 	if cooldown > 0:
@@ -88,10 +91,19 @@ func _ready():
 		
 func _gun_process(delta):
 	pass # override 
+	
+func _clear_bullet_queue():
+	for x in range(0, newBullets):
+		var newBullet = bullet_prefab.instance()
+		_launch_bullet(newBullet)
+		root.add_child(newBullet)
+	newBullets = 0
+		
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	_gun_process(delta)
+	_clear_bullet_queue()
 	_process_cooldown(delta)
 
 

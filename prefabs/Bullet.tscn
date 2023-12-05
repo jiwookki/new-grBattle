@@ -6,9 +6,13 @@
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 7, 10 )
 
-[node name="Bullet" type="KinematicBody2D"]
+[node name="Bullet" type="RigidBody2D"]
+contacts_reported = 5
+contact_monitor = true
+linear_damp = 0.0
+angular_damp = 0.0
 script = ExtResource( 2 )
-lifetime = 5.0
+lifetime = 3.0
 damage = 1
 piercing = 1
 
