@@ -22,7 +22,7 @@ var player : RigidBody2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	player = get_node("/root/Game/Delta1")
+	player = get_node("/root/Game").get_player_node()
 	print(player)
 	player.get_node("./Gun").connect("on_shot", self, "on_player_shot")
 	_init_boundary()

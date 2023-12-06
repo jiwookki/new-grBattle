@@ -8,6 +8,7 @@
 extents = Vector2( 128, 117.5 )
 
 [node name="Asteroid" type="Area2D" groups=["player_affectable", "player_damager"]]
+pause_mode = 1
 position = Vector2( 625, -163 )
 script = ExtResource( 1 )
 __meta__ = {

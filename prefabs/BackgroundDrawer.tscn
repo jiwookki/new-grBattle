@@ -5,6 +5,7 @@
 [ext_resource path="res://sprites/backdrop2.jpg" type="Texture" id=3]
 
 [node name="BackgroundDrawer" type="Node2D"]
+pause_mode = 1
 position = Vector2( -102, 0 )
 script = ExtResource( 1 )
 __meta__ = {

@@ -12,6 +12,7 @@
 extents = Vector2( 44, 47 )
 
 [node name="Enemy1" type="Area2D" groups=["player_affectable"]]
+pause_mode = 1
 position = Vector2( 405, 98 )
 scale = Vector2( 0.8, 0.8 )
 script = ExtResource( 1 )
@@ -32,7 +33,7 @@ shape = SubResource( 3 )
 texture = ExtResource( 4 )
 
 [node name="Enemy1Gun" type="Node2D" parent="."]
-position = Vector2( -4, 45 )
+position = Vector2( -3.75, 67.5 )
 script = ExtResource( 2 )
 max_ammo = 12
 reload_time_seconds = 3.0
