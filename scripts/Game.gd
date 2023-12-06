@@ -8,6 +8,7 @@ extends Node2D
 signal score_changed
 
 export(NodePath) var player_node
+export(NodePath) var pause_screen 
 
 var player
 var tree
@@ -17,6 +18,7 @@ func _ready():
 	emit_signal("score_changed", ScoreManager.get_score())
 	tree = get_tree()
 	player = get_node(player_node)
+	pause_screen = get_node(pause_screen)
 
 func change_score(score_delta):
 	ScoreManager.change_score(score_delta)
@@ -39,6 +41,7 @@ func on_game_over():
 	
 func _input(event):
 	if event.is_action_pressed("game_pause"):
+		pause_screen.visible = not pause_screen.visible
 		tree.paused = not tree.paused
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/player/PlayerMovement.gd" type="Script" id=2]
@@ -22,6 +22,9 @@
 [ext_resource path="res://scripts/EnemySpawner.gd" type="Script" id=20]
 [ext_resource path="res://sprites/layer_5.BMP" type="Texture" id=21]
 [ext_resource path="res://mainscenes/PosTracker.gd" type="Script" id=22]
+[ext_resource path="res://mainscenes/ResumeButton.gd" type="Script" id=23]
+[ext_resource path="res://mainscenes/SettingsUI.tscn" type="PackedScene" id=24]
+[ext_resource path="res://mainscenes/SettingsButton.gd" type="Script" id=25]
 
 [sub_resource type="DynamicFont" id=4]
 size = 36
@@ -40,6 +43,14 @@ shadow_offset = Vector2( 5, 5 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.121569, 0.121569, 0.121569, 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 64
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=9]
+size = 32
+font_data = ExtResource( 4 )
 
 [sub_resource type="Animation" id=5]
 resource_name = "FadeOut"
@@ -85,6 +96,7 @@ tracks/2/keys = {
 pause_mode = 2
 script = ExtResource( 19 )
 player_node = NodePath("WorldObjects/Player")
+pause_screen = NodePath("UIDraw/PauseScreen")
 
 [node name="UIDraw" type="CanvasLayer" parent="."]
 pause_mode = 1
@@ -165,6 +177,58 @@ custom_fonts/font = SubResource( 2 )
 text = "Ammo: "
 script = ExtResource( 3 )
 prefix = "Ammo: "
+
+[node name="PauseScreen" type="Control" parent="UIDraw"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="ColorRect" type="ColorRect" parent="UIDraw/PauseScreen"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.588235 )
+
+[node name="Label" type="Label" parent="UIDraw/PauseScreen"]
+margin_left = 404.0
+margin_top = 175.0
+margin_right = 560.0
+margin_bottom = 240.0
+custom_fonts/font = SubResource( 8 )
+text = "PAUSED"
+
+[node name="ResumeButton" type="Button" parent="UIDraw/PauseScreen"]
+margin_left = 362.0
+margin_top = 262.0
+margin_right = 606.0
+margin_bottom = 308.0
+focus_neighbour_left = NodePath("../SettingsButton")
+focus_neighbour_top = NodePath("../SettingsButton")
+focus_neighbour_right = NodePath("../SettingsButton")
+focus_neighbour_bottom = NodePath("../SettingsButton")
+focus_next = NodePath("../SettingsButton")
+focus_previous = NodePath("../SettingsButton")
+custom_fonts/font = SubResource( 9 )
+text = "Resume"
+script = ExtResource( 23 )
+pause_root_scene = NodePath("..")
+
+[node name="SettingsButton" type="Button" parent="UIDraw/PauseScreen"]
+margin_left = 363.0
+margin_top = 322.0
+margin_right = 607.0
+margin_bottom = 368.0
+rect_pivot_offset = Vector2( -548, -84 )
+focus_neighbour_left = NodePath(".")
+focus_neighbour_top = NodePath(".")
+focus_neighbour_right = NodePath(".")
+focus_neighbour_bottom = NodePath(".")
+focus_next = NodePath(".")
+focus_previous = NodePath(".")
+custom_fonts/font = SubResource( 9 )
+text = "Settings"
+script = ExtResource( 25 )
+settingsScene = ExtResource( 24 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 pause_mode = 1
@@ -298,6 +362,10 @@ spawn_x_max = 890
 enemy_scene = ExtResource( 11 )
 
 [connection signal="score_changed" from="." to="UIDraw/HUD/ScoreCounter" method="on_update_value"]
+[connection signal="pressed" from="UIDraw/PauseScreen/ResumeButton" to="UIDraw/PauseScreen/ResumeButton" method="button_pressed"]
+[connection signal="pressed" from="UIDraw/PauseScreen/ResumeButton" to="UIDraw/PauseScreen/ResumeButton" method="_on_ResumeButton_pressed"]
+[connection signal="pressed" from="UIDraw/PauseScreen/SettingsButton" to="UIDraw/PauseScreen/SettingsButton" method="button_pressed"]
+[connection signal="pressed" from="UIDraw/PauseScreen/SettingsButton" to="UIDraw/PauseScreen/SettingsButton" method="_on_SettingsButton_pressed"]
 [connection signal="animation_finished" from="FadeOut" to="." method="faded_out"]
 [connection signal="body_entered" from="WorldObjects/Player" to="WorldObjects/Player/Health" method="_on_Delta1_area_entered"]
 [connection signal="update_ammo_count" from="WorldObjects/Player/Gun" to="UIDraw/HUD/ColorRect/AmmoDisp" method="on_update_value"]
