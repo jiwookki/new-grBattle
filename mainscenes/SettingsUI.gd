@@ -7,6 +7,8 @@ extends Control
 
 export(NodePath) onready var mouse_movement_toggle = get_node(mouse_movement_toggle) as CheckBox
 
+export(NodePath) onready var video_settings_dropdown = get_node(video_settings_dropdown) as OptionButton
+
 onready var settings = get_node("/root/SettingsManager")
 
 # Called when the node enters the scene tree for the first time.
@@ -19,5 +21,6 @@ func _on_ready():
 
 func _on_Control_tree_exiting():
 	settings.use_mouse_inputs = mouse_movement_toggle.pressed
+	settings.video_mode = video_settings_dropdown.selected
 	print(mouse_movement_toggle.pressed)
 	settings.save_configs()

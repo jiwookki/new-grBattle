@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://mainscenes/SettingsUI.gd" type="Script" id=1]
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://defaut_theme.tres" type="Theme" id=3]
 [ext_resource path="res://scripts/ui/SettingExitButton.gd" type="Script" id=4]
+[ext_resource path="res://mainscenes/VideoModesSelector.gd" type="Script" id=5]
 
 [sub_resource type="DynamicFont" id=1]
 size = 64
@@ -17,6 +18,10 @@ font_data = ExtResource( 2 )
 size = 32
 font_data = ExtResource( 2 )
 
+[sub_resource type="DynamicFont" id=5]
+size = 24
+font_data = ExtResource( 2 )
+
 [sub_resource type="DynamicFont" id=4]
 size = 32
 font_data = ExtResource( 2 )
@@ -25,7 +30,8 @@ font_data = ExtResource( 2 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 1 )
-mouse_movement_toggle = NodePath("HBoxContainer/ColorRect/CheckBox")
+mouse_movement_toggle = NodePath("HBoxContainer/ColorRect/Panel/CheckBox")
+video_settings_dropdown = NodePath("HBoxContainer/ColorRect2/Panel/OptionButton")
 
 [node name="Background" type="ColorRect" parent="."]
 margin_right = 960.0
@@ -59,31 +65,53 @@ margin_left = 22.0
 margin_top = 10.0
 margin_right = 230.0
 margin_bottom = 75.0
+rect_pivot_offset = Vector2( -72, -40 )
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 2 )
 text = "Controls"
 
-[node name="Label" type="Label" parent="HBoxContainer/ColorRect"]
-margin_left = 57.0
-margin_top = 63.0
-margin_right = 317.0
-margin_bottom = 128.0
+[node name="Panel2" type="Panel" parent="HBoxContainer/ColorRect"]
+margin_left = 23.0
+margin_top = 124.0
+margin_right = 407.0
+margin_bottom = 177.0
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/Panel2"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 270.0
+margin_bottom = 73.0
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 3 )
 text = "Use mouse for aiming"
 
-[node name="CheckBox" type="CheckBox" parent="HBoxContainer/ColorRect"]
-margin_left = 337.0
-margin_top = 60.0
-margin_right = 361.0
-margin_bottom = 84.0
+[node name="Panel" type="Panel" parent="HBoxContainer/ColorRect"]
+margin_left = 23.0
+margin_top = 58.0
+margin_right = 407.0
+margin_bottom = 111.0
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/Panel"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 270.0
+margin_bottom = 73.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 3 )
+text = "Use mouse for aiming"
+
+[node name="CheckBox" type="CheckBox" parent="HBoxContainer/ColorRect/Panel"]
+margin_left = 315.0
+margin_top = 7.0
+margin_right = 339.0
+margin_bottom = 31.0
 rect_scale = Vector2( 1.77939, 1.73291 )
-focus_neighbour_left = NodePath("../../../Button")
-focus_neighbour_top = NodePath("../../../Button")
-focus_neighbour_right = NodePath("../../../Button")
-focus_neighbour_bottom = NodePath("../../../Button")
-focus_next = NodePath("../../../Button")
-focus_previous = NodePath("../../../Button")
+focus_neighbour_left = NodePath("../../../../Button")
+focus_neighbour_top = NodePath("../../../../Button")
+focus_neighbour_right = NodePath("../../../../Button")
+focus_neighbour_bottom = NodePath("../../../../Button")
+focus_next = NodePath("../../../../Button")
+focus_previous = NodePath("../../../../Button")
 
 [node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
 margin_left = 460.0
@@ -92,17 +120,51 @@ margin_bottom = 369.0
 size_flags_horizontal = 3
 color = Color( 0.239216, 0.239216, 0.239216, 0.784314 )
 
+[node name="Subtitle1" type="Label" parent="HBoxContainer/ColorRect2"]
+margin_left = 22.0
+margin_top = 10.0
+margin_right = 230.0
+margin_bottom = 75.0
+rect_pivot_offset = Vector2( -72, -40 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
+text = "Video"
+
+[node name="Panel" type="Panel" parent="HBoxContainer/ColorRect2"]
+margin_left = 23.0
+margin_top = 58.0
+margin_right = 407.0
+margin_bottom = 111.0
+
+[node name="Label2" type="Label" parent="HBoxContainer/ColorRect2/Panel"]
+margin_left = 9.0
+margin_top = 10.0
+margin_right = 269.0
+margin_bottom = 45.0
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 3 )
+text = "Window mode"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer/ColorRect2/Panel"]
+margin_left = 172.0
+margin_top = 11.0
+margin_right = 370.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 5 )
+text = "Select"
+script = ExtResource( 5 )
+
 [node name="Button" type="Button" parent="."]
 margin_left = 772.0
 margin_top = 482.0
 margin_right = 927.0
 margin_bottom = 521.0
-focus_neighbour_left = NodePath("../HBoxContainer/ColorRect/CheckBox")
-focus_neighbour_top = NodePath("../HBoxContainer/ColorRect/CheckBox")
-focus_neighbour_right = NodePath("../HBoxContainer/ColorRect/CheckBox")
-focus_neighbour_bottom = NodePath("../HBoxContainer/ColorRect/CheckBox")
-focus_next = NodePath("../HBoxContainer/ColorRect/CheckBox")
-focus_previous = NodePath("../HBoxContainer/ColorRect/CheckBox")
+focus_neighbour_left = NodePath("../HBoxContainer/ColorRect/Panel/CheckBox")
+focus_neighbour_top = NodePath("../HBoxContainer/ColorRect/Panel/CheckBox")
+focus_neighbour_right = NodePath("../HBoxContainer/ColorRect/Panel/CheckBox")
+focus_neighbour_bottom = NodePath("../HBoxContainer/ColorRect/Panel/CheckBox")
+focus_next = NodePath("../HBoxContainer/ColorRect/Panel/CheckBox")
+focus_previous = NodePath("../HBoxContainer/ColorRect/Panel/CheckBox")
 custom_fonts/font = SubResource( 4 )
 text = "Save & Exit"
 script = ExtResource( 4 )
