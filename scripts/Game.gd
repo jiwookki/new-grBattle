@@ -42,6 +42,7 @@ func on_game_over():
 func _input(event):
 	if event.is_action_pressed("game_pause"):
 		pause_screen.visible = not pause_screen.visible
+		pause_screen.on_pause()
 		tree.paused = not tree.paused
 
 

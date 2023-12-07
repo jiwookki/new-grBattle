@@ -15,8 +15,8 @@ var handover
 
 # Called when the node enters the scene tree for the first time.
 
-func get_handover(new_handover):
-	handover = new_handover
+func set_handover(node_instance, new_handover):
+	handover = funcref(node_instance, new_handover)
 
 func _ready():
 	mouse_movement_toggle.pressed = settings.use_mouse_inputs

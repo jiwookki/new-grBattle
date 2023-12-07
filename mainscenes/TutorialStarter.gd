@@ -8,6 +8,7 @@ extends Button
 # Called when the node enters the scene tree for the first time.
 
 func _ready():
+	print("focused")
 	grab_focus()
 
 func start_game():
