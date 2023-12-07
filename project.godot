@@ -37,7 +37,7 @@ config/windows_native_icon="res://icon-128.ico"
 [autoload]
 
 ScoreManager="*res://scripts/ui/ScoreManager.gd"
-SettingsManager="*res://scripts/SettingsManager.gd"
+SettingsManager="*res://scripts/ui/SettingsManager.gd"
 
 [display]
 
