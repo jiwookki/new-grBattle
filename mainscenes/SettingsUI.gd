@@ -11,9 +11,14 @@ export(NodePath) onready var video_settings_dropdown = get_node(video_settings_d
 
 onready var settings = get_node("/root/SettingsManager")
 
+var handover
+
 # Called when the node enters the scene tree for the first time.
 
-func _on_ready():
+func get_handover(new_handover):
+	handover = new_handover
+
+func _ready():
 	mouse_movement_toggle.pressed = settings.use_mouse_inputs
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
@@ -24,3 +29,4 @@ func _on_Control_tree_exiting():
 	settings.video_mode = video_settings_dropdown.selected
 	print(mouse_movement_toggle.pressed)
 	settings.save_configs()
+	handover.call_func()
