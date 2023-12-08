@@ -44,10 +44,12 @@ bullet_prefab = ExtResource( 7 )
 
 [node name="Health" parent="." instance=ExtResource( 5 )]
 script = ExtResource( 6 )
+starting_health = 150
 
 [node name="DamageSounder" type="AudioStreamPlayer" parent="Health"]
 stream = ExtResource( 3 )
 bus = "SFX"
 
 [connection signal="area_entered" from="." to="Health" method="_on_Enemy1_area_entered"]
+[connection signal="body_entered" from="." to="Health" method="_on_Enemy1_area_entered"]
 [connection signal="tree_exiting" from="." to="." method="_on_death"]

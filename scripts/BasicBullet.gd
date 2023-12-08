@@ -18,9 +18,8 @@ var _current_lifetime = 0
 var _current_pierced = 0
 
 func startShoot(new_velocity, new_position, new_angle):
-	linear_velocity = new_velocity
 	_velocity = new_velocity
-	position = new_position
+	global_position = new_position
 	linear_velocity = new_velocity
 	
 	rotation = new_angle

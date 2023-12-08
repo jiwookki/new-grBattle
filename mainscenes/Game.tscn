@@ -322,18 +322,18 @@ spawn_x_min = 350
 spawn_x_max = 890
 enemy_scene = ExtResource( 12 )
 
-[node name="Player" type="RigidBody2D" parent="WorldObjects"]
+[node name="Player" type="RigidBody2D" parent="WorldObjects" groups=["player"]]
 pause_mode = 1
-unique_name_in_owner = true
 position = Vector2( 480, 276 )
+mass = 10.0
 gravity_scale = 0.0
 contacts_reported = 5
 contact_monitor = true
 linear_damp = 0.0
 angular_damp = 20.0
 script = ExtResource( 2 )
-speed = 500.0
-turn_speed = 8000.0
+speed = 5000.0
+turn_speed = 80000.0
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="WorldObjects/Player"]
 remote_path = NodePath("../../../Camera2D")
@@ -364,7 +364,7 @@ bus = "SFX"
 
 [node name="Health" parent="WorldObjects/Player" instance=ExtResource( 10 )]
 script = ExtResource( 14 )
-starting_health = 4
+starting_health = 800
 
 [node name="PlayerDamageSounder" type="AudioStreamPlayer" parent="WorldObjects/Player/Health"]
 stream = ExtResource( 9 )

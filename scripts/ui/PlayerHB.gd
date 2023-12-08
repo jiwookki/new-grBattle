@@ -16,6 +16,7 @@ func _ready():
 func init_healthbar(maxhealth):
 	max_value = maxhealth
 	min_value = 0
+	on_health_change(maxhealth)
 
 func on_health_change(newhealth):
 	value = newhealth
