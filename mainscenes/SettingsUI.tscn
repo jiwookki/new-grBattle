@@ -6,7 +6,6 @@
 [ext_resource path="res://scripts/ui/SettingExitButton.gd" type="Script" id=4]
 [ext_resource path="res://scripts/ui/VideoModesSelector.gd" type="Script" id=5]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 64
 font_data = ExtResource( 2 )
@@ -35,8 +34,8 @@ mouse_movement_toggle = NodePath("HBoxContainer/ColorRect/Panel/CheckBox")
 video_settings_dropdown = NodePath("HBoxContainer/ColorRect2/Panel/OptionButton")
 
 [node name="Background" type="ColorRect" parent="."]
-margin_right = 960.0
-margin_bottom = 544.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.780392 )
 
 [node name="Heading" type="Label" parent="."]
@@ -49,15 +48,17 @@ custom_fonts/font = SubResource( 1 )
 text = "Settings"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-margin_left = 35.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 36.0
 margin_top = 99.0
-margin_right = 925.0
-margin_bottom = 468.0
+margin_right = -33.0
+margin_bottom = -83.0
 custom_constants/separation = 30
 
 [node name="ColorRect" type="ColorRect" parent="HBoxContainer"]
 margin_right = 430.0
-margin_bottom = 369.0
+margin_bottom = 362.0
 size_flags_horizontal = 3
 color = Color( 0.239216, 0.239216, 0.239216, 0.784314 )
 
@@ -72,10 +73,12 @@ custom_fonts/font = SubResource( 2 )
 text = "Controls"
 
 [node name="Panel" type="Panel" parent="HBoxContainer/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 23.0
 margin_top = 58.0
-margin_right = 407.0
-margin_bottom = 111.0
+margin_right = -23.0
+margin_bottom = -251.0
 
 [node name="Label" type="Label" parent="HBoxContainer/ColorRect/Panel"]
 margin_left = 10.0
@@ -87,9 +90,11 @@ custom_fonts/font = SubResource( 3 )
 text = "Use mouse for aiming"
 
 [node name="CheckBox" type="CheckBox" parent="HBoxContainer/ColorRect/Panel"]
-margin_left = 315.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -69.0
 margin_top = 7.0
-margin_right = 339.0
+margin_right = -45.0
 margin_bottom = 31.0
 rect_scale = Vector2( 1.77939, 1.73291 )
 focus_neighbour_left = NodePath("../../../ColorRect2/Panel/OptionButton")
@@ -101,8 +106,8 @@ focus_previous = NodePath("../../../../Button")
 
 [node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
 margin_left = 460.0
-margin_right = 890.0
-margin_bottom = 369.0
+margin_right = 891.0
+margin_bottom = 362.0
 size_flags_horizontal = 3
 color = Color( 0.239216, 0.239216, 0.239216, 0.784314 )
 
@@ -117,10 +122,12 @@ custom_fonts/font = SubResource( 2 )
 text = "Video"
 
 [node name="Panel" type="Panel" parent="HBoxContainer/ColorRect2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 margin_left = 23.0
 margin_top = 58.0
-margin_right = 407.0
-margin_bottom = 111.0
+margin_right = -24.0
+margin_bottom = -251.0
 
 [node name="Label2" type="Label" parent="HBoxContainer/ColorRect2/Panel"]
 margin_left = 9.0
@@ -132,9 +139,11 @@ custom_fonts/font = SubResource( 3 )
 text = "Window mode"
 
 [node name="OptionButton" type="OptionButton" parent="HBoxContainer/ColorRect2/Panel"]
-margin_left = 172.0
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -212.0
 margin_top = 11.0
-margin_right = 370.0
+margin_right = -14.0
 margin_bottom = 42.0
 focus_neighbour_left = NodePath("../../../ColorRect/Panel/CheckBox")
 focus_neighbour_top = NodePath("../../../../Button")
@@ -147,10 +156,14 @@ text = "Select"
 script = ExtResource( 5 )
 
 [node name="Button" type="Button" parent="."]
-margin_left = 772.0
-margin_top = 482.0
-margin_right = 927.0
-margin_bottom = 521.0
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -172.0
+margin_top = -61.0
+margin_right = -17.0
+margin_bottom = -22.0
 focus_neighbour_left = NodePath("../HBoxContainer/ColorRect/Panel/CheckBox")
 focus_neighbour_top = NodePath("../HBoxContainer/ColorRect2/Panel/OptionButton")
 focus_neighbour_right = NodePath("../HBoxContainer/ColorRect2/Panel/OptionButton")
