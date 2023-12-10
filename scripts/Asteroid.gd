@@ -1,4 +1,4 @@
-extends "res://scripts/GameMovObj.gd"
+extends BasicBullet
 
 
 # Declare member variables here. Examples:
@@ -11,25 +11,16 @@ export var fall_speed : float
 
 export var knockback : int
 
-export var damage : int
-
 var blockSound
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	_init_boundary()
-	minY = -200
-	maxY = get_viewport_rect().size.y + get_node("./Sprite").texture.get_height() / 2
 	blockSound = get_node("./AsteroidBlockSound")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position.y += fall_speed * delta
-	if position.y > maxY:
-		emit_signal("on_despawn", true)
-		queue_free()
-	_keep_boundary()
 
 
 

@@ -1,4 +1,4 @@
-extends "res://scripts/GameMovObj.gd"
+extends GameObject
 
 
 # Declare member variables here. Examples:
@@ -18,14 +18,16 @@ var _dash_cycle = 0
 var _dash_direction = 0
 var _dash_rng = RandomNumberGenerator.new()
 
-var player : RigidBody2D
+var _new_impulse
+
+var player
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	player = get_node("/root/Game").get_player_node()
 	print(player)
 	player.get_node("./Gun").connect("on_shot", self, "on_player_shot")
-	_init_boundary()
 
 func on_player_shot():
 	if _dash_rng.randf() < dash_chance:
@@ -38,17 +40,20 @@ func on_player_shot():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if _dash_cycle <= delta:
+		
 		if player.position.x > position.x + max_offset:
-			position.x += speed * delta
-		elif player.position.x < position.x - max_offset:
-			position.x -= speed * delta
-	else:
-		position.x += _dash_direction * delta
-		_dash_cycle -= delta
-	_keep_boundary()
+			_new_impulse = Vector2(speed * delta, 0)
 			
+		elif player.position.x < position.x - max_offset:
+			_new_impulse = Vector2(-speed * delta, 0)
+			
+	else:
+		_new_impulse = Vector2(-speed * delta, 0)
+		_dash_cycle -= delta
+	
+	apply_central_impulse(_new_impulse * delta * _get_relativity(linear_velocity))
 
 
 func _on_death():

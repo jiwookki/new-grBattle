@@ -7,25 +7,15 @@
 [sub_resource type="RectangleShape2D" id=5]
 extents = Vector2( 128, 117.5 )
 
-[node name="Asteroid" type="Area2D" groups=["player_affectable", "player_damager"]]
-pause_mode = 1
-position = Vector2( 625, -163 )
+[node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 1 )
-__meta__ = {
-"_edit_group_": true
-}
-fall_speed = 325.0
-knockback = 300
-damage = 1
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 6.5 )
-shape = SubResource( 5 )
-
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
 
 [node name="AsteroidBlockSound" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )
 
-[connection signal="area_entered" from="." to="." method="_on_Asteroid_area_entered"]
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 6.5 )
+shape = SubResource( 5 )

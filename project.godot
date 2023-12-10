@@ -9,6 +9,16 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "KinematicBody2D",
+"class": "BasicBullet",
+"language": "GDScript",
+"path": "res://scripts/BasicBullet.gd"
+}, {
+"base": "RigidBody2D",
+"class": "GameObject",
+"language": "GDScript",
+"path": "res://scripts/GameObject.gd"
+}, {
 "base": "Node2D",
 "class": "Gun",
 "language": "GDScript",
@@ -17,9 +27,11 @@ _global_script_classes=[ {
 "base": "Node",
 "class": "HealthTracker",
 "language": "GDScript",
-"path": "res://scripts/ui/HealthTracker.gd"
+"path": "res://scripts/HealthTracker.gd"
 } ]
 _global_script_class_icons={
+"BasicBullet": "",
+"GameObject": "",
 "Gun": "",
 "HealthTracker": ""
 }

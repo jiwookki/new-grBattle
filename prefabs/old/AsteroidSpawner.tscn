@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scripts/EnemySpawner.gd" type="Script" id=1]
+[ext_resource path="res://prefabs/Asteroid.tscn" type="PackedScene" id=2]
+
+[node name="AsteroidSpawner" type="Node2D"]
+pause_mode = 1
+position = Vector2( 619, -236 )
+script = ExtResource( 1 )
+score = 100
+spawn_rate = 200
+spawn_x_min = 350
+spawn_x_max = 890
+enemy_scene = ExtResource( 2 )

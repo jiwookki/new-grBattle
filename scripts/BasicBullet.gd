@@ -1,4 +1,6 @@
- extends RigidBody2D
+ extends KinematicBody2D
+
+class_name BasicBullet
 
 
 # Declare member variables here. Examples:
@@ -16,11 +18,12 @@ export var damaging_group : String
 var _velocity : Vector2
 var _current_lifetime = 0
 var _current_pierced = 0
+var _new_collision : KinematicCollision2D
+
 
 func startShoot(new_velocity, new_position, new_angle):
 	_velocity = new_velocity
 	global_position = new_position
-	linear_velocity = new_velocity
 	
 	rotation = new_angle
 	
@@ -32,14 +35,25 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
+	
 	_current_lifetime += delta
+	
+	_new_collision = move_and_collide(_velocity, false)
+	print(_new_collision)
+	if _new_collision.collider.is_in_group(damaging_group):
+		_new_collision.collider._on_bullet_collide(self)
+
 	if _current_lifetime >= lifetime:
 		queue_free()
 
 func _on_hit(area):
+	
 	if area.is_in_group(damaging_group):
 		_current_pierced += 1
-		linear_velocity = _velocity
+		
 		
 		if _current_pierced >= piercing:
 			queue_free()
+
+func get_contact_damage():
+	return damage # override for any special bullet damage
