@@ -38,7 +38,6 @@ func on_player_shot():
 		_dash_cycle = dash_duration
 
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if _dash_cycle <= delta:

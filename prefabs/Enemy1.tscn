@@ -11,8 +11,9 @@
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 44, 47 )
 
-[node name="Enemy1" type="RigidBody2D"]
+[node name="Enemy1" type="RigidBody2D" groups=["enemy"]]
 script = ExtResource( 1 )
+health_tracker_path = NodePath("Health")
 contact_damage = 1.0
 bullet_group = "player_bullet"
 GameObject_damage_group = "player"
@@ -27,16 +28,13 @@ dash_chance = 0.6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 6, -1 )
-scale = Vector2( 1, 1 )
 shape = SubResource( 3 )
 
 [node name="Sprite" type="Sprite" parent="."]
-scale = Vector2( 1, 1 )
 texture = ExtResource( 4 )
 
 [node name="Enemy1Gun" type="Node2D" parent="."]
 position = Vector2( -3.75, 67.5 )
-scale = Vector2( 1, 1 )
 script = ExtResource( 2 )
 max_ammo = 12
 reload_time_seconds = 3.0

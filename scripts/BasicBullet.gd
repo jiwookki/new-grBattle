@@ -38,21 +38,22 @@ func _physics_process(delta):
 	
 	_current_lifetime += delta
 	
-	_new_collision = move_and_collide(_velocity, false)
-	print(_new_collision)
-	if _new_collision.collider.is_in_group(damaging_group):
-		_new_collision.collider._on_bullet_collide(self)
+	_new_collision = move_and_collide(_velocity * delta, false)
+	if _new_collision != null:
+		if _new_collision.collider.is_in_group(damaging_group):
+			self._on_hit(_new_collision.collider)
+			_new_collision.collider._on_bullet_collide(self)
 
 	if _current_lifetime >= lifetime:
 		queue_free()
 
-func _on_hit(area):
-	
-	if area.is_in_group(damaging_group):
+func _on_hit(object):
 		_current_pierced += 1
+		object._on_bullet_collide(self)
 		
 		
 		if _current_pierced >= piercing:
+			print("queue_free")
 			queue_free()
 
 func get_contact_damage():
