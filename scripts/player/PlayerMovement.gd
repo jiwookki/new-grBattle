@@ -20,13 +20,17 @@ var rotation_func
 
 func _ready():
 	._ready()
+	load_rotation_mode()
+	
+	
+
+func load_rotation_mode():
 	if get_node("/root/SettingsManager").use_mouse_inputs:
 		print("use mouse input")
 		rotation_func = funcref(self, "_rotate_to_mouse_cursor")
 	else:
 		print("no use mouse input")
 		rotation_func = funcref(self, "_rotate_from_inputs")
-
 
 
 func _get_target_angle_delta():
@@ -50,7 +54,11 @@ func _rotate_from_inputs():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
-	print(delta * speed * Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down"))
 	apply_central_impulse(delta * speed * Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down"))
 	rotation_func.call_func()
+	
+
+
+func _on_Gun_bullet_spawn(bullet):
+	bullet.add_collision_exception_with(self)
 	

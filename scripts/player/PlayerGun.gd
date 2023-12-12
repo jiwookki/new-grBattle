@@ -35,10 +35,9 @@ func _on_ammo_change(newammo):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
+	._ready()
 	emit_signal("update_ammo_count", ammo)
 	print("gun init")
-	root = get_node("/root")
 	shootSounder = get_node("./ShootSounder")
 	player = get_node("../")
 		

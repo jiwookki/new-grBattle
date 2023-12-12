@@ -12,6 +12,7 @@
 extents = Vector2( 44, 47 )
 
 [node name="Enemy1" type="RigidBody2D" groups=["enemy"]]
+gravity_scale = 0.0
 script = ExtResource( 1 )
 health_tracker_path = NodePath("Health")
 contact_damage = 1.0

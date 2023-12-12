@@ -8,6 +8,8 @@ extends Node2D
 
 signal on_shot
 
+signal bullet_spawn
+
 
 export var max_ammo = 8
 
@@ -25,7 +27,7 @@ var ammo = max_ammo
 
 var cooldown = 0
 
-var root : Node
+var bullets_node : Node
 
 var newBullets = 0
 
@@ -86,7 +88,7 @@ func _process_cooldown(delta):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	root = get_node("/root/Game")
+	bullets_node = get_node("/root/Game/WorldObjects/Bullets")
 		
 		
 func _gun_process(delta):
@@ -96,9 +98,10 @@ func _clear_bullet_queue():
 	for x in range(0, newBullets):
 		var newBullet = bullet_prefab.instance()
 		_launch_bullet(newBullet)
-		root.add_child(newBullet)
+		bullets_node.add_child(newBullet)
+		emit_signal("bullet_spawn", newBullet)
 	newBullets = 0
-		
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
