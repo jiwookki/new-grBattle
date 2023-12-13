@@ -11,6 +11,12 @@ var use_mouse_inputs : bool
 
 var video_mode : int
 
+var master_volume : float
+
+var sfx_volume : float
+
+var music_volume : float
+
 var settings_file = "user://settings.cfg"
 
 var video_settings_file = "user://video_settings.cfg"
@@ -32,6 +38,9 @@ func apply_video_configs():
 			OS.window_fullscreen = false
 			OS.window_resizable = false
 		
+
+func set_volume_levels():
+	pass
 
 
 func apply_sync_video_configs():

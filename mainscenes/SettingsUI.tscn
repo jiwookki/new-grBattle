@@ -10,12 +10,12 @@
 size = 64
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 42
+[sub_resource type="DynamicFont" id=3]
+size = 24
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=3]
-size = 32
+[sub_resource type="DynamicFont" id=2]
+size = 36
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=5]
@@ -62,23 +62,15 @@ margin_bottom = 362.0
 size_flags_horizontal = 3
 color = Color( 0.239216, 0.239216, 0.239216, 0.784314 )
 
-[node name="Subtitle1" type="Label" parent="HBoxContainer/ColorRect"]
-margin_left = 22.0
-margin_top = 10.0
-margin_right = 230.0
-margin_bottom = 75.0
-rect_pivot_offset = Vector2( -72, -40 )
-theme = ExtResource( 3 )
-custom_fonts/font = SubResource( 2 )
-text = "Controls"
-
 [node name="Panel" type="Panel" parent="HBoxContainer/ColorRect"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 23.0
-margin_top = 58.0
-margin_right = -23.0
-margin_bottom = -251.0
+anchor_left = 0.0511628
+anchor_top = 0.160221
+anchor_right = 0.944186
+anchor_bottom = 0.30663
+margin_bottom = -13.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Label" type="Label" parent="HBoxContainer/ColorRect/Panel"]
 margin_left = 10.0
@@ -92,10 +84,10 @@ text = "Use mouse for aiming"
 [node name="CheckBox" type="CheckBox" parent="HBoxContainer/ColorRect/Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -69.0
-margin_top = 7.0
-margin_right = -45.0
-margin_bottom = 31.0
+margin_left = -44.0
+margin_top = -3.0
+margin_right = -18.0
+margin_bottom = 23.0
 rect_scale = Vector2( 1.77939, 1.73291 )
 focus_neighbour_left = NodePath("../../../ColorRect2/Panel/OptionButton")
 focus_neighbour_top = NodePath("../../../../Button")
@@ -103,6 +95,99 @@ focus_neighbour_right = NodePath("../../../ColorRect2/Panel/OptionButton")
 focus_neighbour_bottom = NodePath("../../../../Button")
 focus_next = NodePath(".")
 focus_previous = NodePath("../../../../Button")
+
+[node name="Subtitle1" type="Label" parent="HBoxContainer/ColorRect/Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -48.0
+margin_bottom = -48.0
+rect_pivot_offset = Vector2( -72, -40 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
+text = "Controls"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Panel2" type="Panel" parent="HBoxContainer/ColorRect"]
+anchor_left = 0.0511628
+anchor_top = 0.464088
+anchor_right = 0.944186
+anchor_bottom = 0.903315
+margin_top = -8.0
+margin_bottom = -48.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="HBoxContainer/ColorRect/Panel2"]
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 270.0
+margin_bottom = 73.0
+rect_pivot_offset = Vector2( -612, -156 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 3 )
+text = "Master"
+
+[node name="Label2" type="Label" parent="HBoxContainer/ColorRect/Panel2"]
+margin_left = 10.0
+margin_top = 48.0
+margin_right = 270.0
+margin_bottom = 113.0
+rect_pivot_offset = Vector2( -612, -156 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 3 )
+text = "Music"
+
+[node name="Label3" type="Label" parent="HBoxContainer/ColorRect/Panel2"]
+margin_left = 10.0
+margin_top = 88.0
+margin_right = 270.0
+margin_bottom = 153.0
+rect_pivot_offset = Vector2( -612, -156 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 3 )
+text = "SFX"
+
+[node name="SFXSlider" type="HSlider" parent="HBoxContainer/ColorRect/Panel2"]
+margin_left = 140.0
+margin_top = 80.0
+margin_right = 360.0
+margin_bottom = 120.0
+rect_pivot_offset = Vector2( -471, -61 )
+min_value = -50.0
+max_value = 0.0
+
+[node name="MusicSlider" type="HSlider" parent="HBoxContainer/ColorRect/Panel2"]
+margin_left = 140.0
+margin_top = 40.0
+margin_right = 360.0
+margin_bottom = 80.0
+rect_pivot_offset = Vector2( -471, -61 )
+min_value = -50.0
+max_value = 0.0
+
+[node name="MasterSlider" type="HSlider" parent="HBoxContainer/ColorRect/Panel2"]
+margin_left = 141.0
+margin_right = 361.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( -471, -61 )
+min_value = -50.0
+max_value = 0.0
+
+[node name="Subtitle2" type="Label" parent="HBoxContainer/ColorRect/Panel2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -53.0
+margin_bottom = -53.0
+rect_pivot_offset = Vector2( -72, -40 )
+theme = ExtResource( 3 )
+custom_fonts/font = SubResource( 2 )
+text = "Audio"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="ColorRect2" type="ColorRect" parent="HBoxContainer"]
 margin_left = 460.0
@@ -122,18 +207,20 @@ custom_fonts/font = SubResource( 2 )
 text = "Video"
 
 [node name="Panel" type="Panel" parent="HBoxContainer/ColorRect2"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 23.0
-margin_top = 58.0
-margin_right = -24.0
-margin_bottom = -251.0
+anchor_left = 0.0533643
+anchor_top = 0.160221
+anchor_right = 0.944316
+anchor_bottom = 0.30663
+margin_bottom = -13.0
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Label2" type="Label" parent="HBoxContainer/ColorRect2/Panel"]
-margin_left = 9.0
-margin_top = 10.0
-margin_right = 269.0
-margin_bottom = 45.0
+margin_left = 10.0
+margin_top = 8.0
+margin_right = 270.0
+margin_bottom = 43.0
 theme = ExtResource( 3 )
 custom_fonts/font = SubResource( 3 )
 text = "Window mode"
@@ -142,9 +229,9 @@ text = "Window mode"
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -212.0
-margin_top = 11.0
+margin_top = 5.0
 margin_right = -14.0
-margin_bottom = 42.0
+margin_bottom = 36.0
 focus_neighbour_left = NodePath("../../../ColorRect/Panel/CheckBox")
 focus_neighbour_top = NodePath("../../../../Button")
 focus_neighbour_right = NodePath("../../../ColorRect/Panel/CheckBox")
