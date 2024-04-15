@@ -12,12 +12,12 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "Gun",
 "language": "GDScript",
-"path": "res://Gun.gd"
+"path": "res://scripts/Gun.gd"
 }, {
 "base": "Node",
 "class": "HealthTracker",
 "language": "GDScript",
-"path": "res://HealthTracker.gd"
+"path": "res://scripts/HealthTracker.gd"
 } ]
 _global_script_class_icons={
 "Gun": "",
@@ -33,7 +33,7 @@ config/windows_native_icon="res://icon-128.ico"
 
 [autoload]
 
-ScoreManager="*res://ScoreManager.gd"
+ScoreManager="*res://scripts/ScoreManager.gd"
 
 [display]
 

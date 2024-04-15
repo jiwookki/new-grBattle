@@ -1,0 +1,66 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://mainscenes/ScoreDisplay.gd" type="Script" id=2]
+[ext_resource path="res://sprites/delta1_1.png" type="Texture" id=3]
+[ext_resource path="res://audio/select.wav" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=3]
+size = 48
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 48
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="Animation" id=4]
+resource_name = "GameOver"
+length = 2.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScoreModal/Delta11:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 2 ),
+"transitions": PoolRealArray( 1, 0.267943 ),
+"update": 0,
+"values": [ 0.0, 360.0 ]
+}
+
+[node name="ScoreModal" type="Node2D"]
+
+[node name="Title2" type="Label" parent="."]
+margin_left = 371.0
+margin_top = 266.0
+margin_right = 656.0
+margin_bottom = 321.0
+custom_fonts/font = SubResource( 3 )
+text = "Your score was "
+
+[node name="ScoreDisplay" type="Label" parent="."]
+margin_left = 650.0
+margin_top = 269.0
+margin_right = 726.0
+margin_bottom = 370.0
+custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "0000
+"
+script = ExtResource( 2 )
+
+[node name="Delta11" type="Sprite" parent="."]
+position = Vector2( 295, 291 )
+texture = ExtResource( 3 )
+
+[node name="Delta1Spinner" type="AnimationPlayer" parent="."]
+root_node = NodePath("../..")
+autoplay = "GameOver"
+anims/GameOver = SubResource( 4 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+autoplay = true
