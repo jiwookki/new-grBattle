@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=1]
 [ext_resource path="res://PlayerMovement.gd" type="Script" id=2]
@@ -43,8 +43,6 @@ size = 36
 outline_size = 5
 outline_color = Color( 0, 0.32549, 0.192157, 1 )
 font_data = ExtResource( 4 )
-
-[sub_resource type="RectangleShape2D" id=1]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 19 )
@@ -112,9 +110,6 @@ scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 player_speed = 400
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Delta1"]
-shape = SubResource( 1 )
-
 [node name="Sprite" type="Sprite" parent="Delta1"]
 scale = Vector2( 0.25, 0.25 )
 texture = ExtResource( 1 )
@@ -137,6 +132,9 @@ starting_health = 4
 [node name="PlayerDamageSounder" type="AudioStreamPlayer" parent="Delta1/Health"]
 stream = ExtResource( 9 )
 bus = "SFX"
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Delta1"]
+polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10, 7.33333, 0, 9, 10, 7.33333, 7.66667, -1, 2, -10 )
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
 position = Vector2( 619, -236 )
