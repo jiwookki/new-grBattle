@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=23 format=2]
 
-[ext_resource path="res://sprites/delta1_1.png" type="Texture" id=1]
+[ext_resource path="res://sprites/delta1-1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/PlayerMovement.gd" type="Script" id=2]
 [ext_resource path="res://scripts/NumCounter.gd" type="Script" id=3]
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=4]
@@ -14,6 +14,7 @@
 [ext_resource path="res://gamescenes/Asteroid.tscn" type="PackedScene" id=12]
 [ext_resource path="res://audio/invasion-1.mp3" type="AudioStream" id=13]
 [ext_resource path="res://scripts/PlayerHealth.gd" type="Script" id=14]
+[ext_resource path="res://sprites/delta1-0.png" type="Texture" id=15]
 [ext_resource path="res://audio/lasershoot.wav" type="AudioStream" id=16]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=19]
 [ext_resource path="res://scripts/EnemySpawner.gd" type="Script" id=20]
@@ -42,6 +43,14 @@ size = 36
 outline_size = 5
 outline_color = Color( 0, 0.32549, 0.192157, 1 )
 font_data = ExtResource( 4 )
+
+[sub_resource type="SpriteFrames" id=6]
+animations = [ {
+"frames": [ ExtResource( 15 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Game" type="Node2D"]
 script = ExtResource( 19 )
@@ -102,12 +111,8 @@ prefix = "Health: "
 position = Vector2( 498, 284 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
-max_speed = 5
-lerp_rate = 20
-
-[node name="Sprite" type="Sprite" parent="Delta1"]
-scale = Vector2( 0.25, 0.25 )
-texture = ExtResource( 1 )
+max_speed = 4.5
+lerp_rate = 14.0
 
 [node name="Gun" type="Node2D" parent="Delta1"]
 position = Vector2( 0, -10 )
@@ -130,6 +135,12 @@ bus = "SFX"
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Delta1"]
 polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10, 7.33333, 0, 9, 10, 7.33333, 7.66667, -1, 2, -10 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Delta1"]
+scale = Vector2( 0.25, 0.25 )
+frames = SubResource( 6 )
+speed_scale = 5.0
+playing = true
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
 position = Vector2( 619, -236 )

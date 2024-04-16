@@ -5,9 +5,9 @@ extends "res://GameMovObj.gd"
 # var a = 2
 # var b = "text"
 
-export var max_speed = 200
+export var max_speed = 200.0
 
-export var lerp_rate = 5
+export var lerp_rate = 5.0
 
 var _velocity = Vector2(0, 0)
 
@@ -28,5 +28,14 @@ func _process(delta):
 	position += _velocity
 	_keep_boundary()
 	
-
+func _init_boundary():
+	var _objSprite = _get_self_sprite()
+	minX = border_offset + 40
+	maxX = border_x + border_offset - 40 
+	minY = 40
+	maxY = -40 + get_viewport_rect().size.y
+	print(str(minX))
+	print(str(maxX))
+	print(str(minY))
+	print(str(maxY))
 
