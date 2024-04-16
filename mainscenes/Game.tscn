@@ -199,7 +199,7 @@ bus = "SFX"
 polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10, 7.33333, 0, 9, 10, 7.33333, 7.66667, -1, 2, -10 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Delta1"]
-scale = Vector2( 0.25, 0.248661 )
+scale = Vector2( 0.342763, 0.324064 )
 frames = SubResource( 6 )
 playing = true
 
