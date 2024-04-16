@@ -38,12 +38,12 @@ custom_fonts/font = SubResource( 1 )
 text = "Gamma Ray Battle"
 
 [node name="Title2" type="Label" parent="."]
-margin_left = 322.0
-margin_top = 512.0
-margin_right = 642.0
-margin_bottom = 561.0
+margin_left = 244.0
+margin_top = 507.0
+margin_right = 564.0
+margin_bottom = 556.0
 custom_fonts/font = SubResource( 3 )
-text = "Copyright (c) 2024 Jiwoo Lee"
+text = "Copyright (c) 2024 Jiwoo Lee Built 17.04.2024"
 
 [node name="Start" type="Label" parent="."]
 margin_left = 299.0

@@ -198,8 +198,8 @@ bus = "SFX"
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Delta1"]
 polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10, 7.33333, 0, 9, 10, 7.33333, 7.66667, -1, 2, -10 )
 
-[node name="AnimatedSprite" type="AnimatedSprite" parent="Delta1"]
-scale = Vector2( 0.25, 0.25 )
+[node name="Sprite" type="AnimatedSprite" parent="Delta1"]
+scale = Vector2( 0.25, 0.248661 )
 frames = SubResource( 6 )
 playing = true
 
@@ -232,8 +232,10 @@ z_index = -4096
 
 [node name="ScreenFlash" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0 )
-margin_right = 960.0
-margin_bottom = 544.0
+margin_left = -557.0
+margin_top = -602.0
+margin_right = 1534.0
+margin_bottom = 1575.0
 
 [node name="Flashbang" type="AnimationPlayer" parent="ScreenFlash"]
 root_node = NodePath("../../ParallaxBackground")
