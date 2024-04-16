@@ -5,9 +5,9 @@
 [ext_resource path="res://scripts/NumCounter.gd" type="Script" id=3]
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://scripts/PlayerGun.gd" type="Script" id=5]
-[ext_resource path="res://sprites/backdrop2.jpg" type="Texture" id=6]
-[ext_resource path="res://sprites/backdrop.PNG" type="Texture" id=7]
-[ext_resource path="res://scripts/BGRender.gd" type="Script" id=8]
+[ext_resource path="res://gamescenes/ParallaxBackground.tscn" type="PackedScene" id=6]
+[ext_resource path="res://mainscenes/FadeOut.gd" type="Script" id=7]
+[ext_resource path="res://mainscenes/MusicPlayer.gd" type="Script" id=8]
 [ext_resource path="res://audio/damaged.wav" type="AudioStream" id=9]
 [ext_resource path="res://gamescenes/Health.tscn" type="PackedScene" id=10]
 [ext_resource path="res://gamescenes/Enemy1.tscn" type="PackedScene" id=11]
@@ -20,18 +20,17 @@
 
 [sub_resource type="Animation" id=5]
 resource_name = "FadeOut"
-length = 0.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("FadeOut/CanvasModulate:color")
+tracks/0/path = NodePath("FadeOut/FadeOutMask:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
+"times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [sub_resource type="DynamicFont" id=2]
@@ -47,14 +46,27 @@ font_data = ExtResource( 4 )
 [node name="Game" type="Node2D"]
 script = ExtResource( 19 )
 
+[node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
+scroll_offset = Vector2( 0, 1200 )
+scroll_speed = 650.0
+
 [node name="FadeOut" type="AnimationPlayer" parent="."]
 anims/FadeOut = SubResource( 5 )
+script = ExtResource( 7 )
 
-[node name="CanvasModulate" type="CanvasModulate" parent="FadeOut"]
+[node name="FadeOutMask" type="ColorRect" parent="FadeOut"]
+modulate = Color( 0, 0, 0, 0 )
+margin_right = 960.0
+margin_bottom = 544.0
 
 [node name="Control" type="Control" parent="."]
-margin_right = 329.0
-margin_bottom = 539.0
+margin_right = 277.0
+margin_bottom = 554.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
 
 [node name="AmmoDisp" type="Label" parent="Control"]
 margin_left = 19.0
@@ -85,24 +97,6 @@ custom_fonts/font = SubResource( 2 )
 text = "Health:"
 script = ExtResource( 3 )
 prefix = "Health: "
-
-[node name="BackgroundDrawer" type="Node2D" parent="."]
-position = Vector2( -102, 0 )
-script = ExtResource( 8 )
-__meta__ = {
-"_edit_group_": true
-}
-scrollSpeed = 600
-
-[node name="BG1" type="Sprite" parent="BackgroundDrawer"]
-position = Vector2( 718, -306 )
-scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 6 )
-
-[node name="BG2" type="Sprite" parent="BackgroundDrawer"]
-position = Vector2( 718, 306 )
-scale = Vector2( 0.85, 0.85 )
-texture = ExtResource( 7 )
 
 [node name="Delta1" type="Area2D" parent="." groups=["player"]]
 position = Vector2( 498, 284 )
@@ -157,7 +151,11 @@ enemy_scene = ExtResource( 11 )
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 autoplay = true
+script = ExtResource( 8 )
 
+[connection signal="game_over" from="." to="ParallaxBackground" method="_fadeout"]
+[connection signal="game_over" from="." to="FadeOut" method="_start_fadeout"]
+[connection signal="game_over" from="." to="MusicPlayer" method="_gameover"]
 [connection signal="score_changed" from="." to="Control/ScoreCounter" method="on_update_value"]
 [connection signal="animation_finished" from="FadeOut" to="." method="faded_out"]
 [connection signal="area_entered" from="Delta1" to="Delta1/Health" method="_on_Delta1_area_entered"]

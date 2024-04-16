@@ -7,6 +7,9 @@ extends Node2D
 
 signal score_changed
 
+signal game_over
+
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -25,11 +28,10 @@ func change_score(score_delta):
 
 
 func on_game_over():
-	get_node("./MusicPlayer").stop()
-	get_node("./FadeOut").play("FadeOut")
+	emit_signal("game_over")
+
 	
-
-
+	
 
 func faded_out(anim_name):
 	get_tree().change_scene("res://mainscenes/GameOver.tscn")

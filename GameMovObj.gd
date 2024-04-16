@@ -7,8 +7,8 @@ extends Area2D
 
 signal on_despawn
 
-export var border_offset = 300
-export var border_x = 634
+export var border_offset = 260
+export var border_x = 710
 
 var minX: int
 var maxX: int

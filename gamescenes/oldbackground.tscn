@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/BGRender.gd" type="Script" id=1]
+[ext_resource path="res://sprites/backdrop2.jpg" type="Texture" id=2]
+[ext_resource path="res://sprites/backdrop.PNG" type="Texture" id=3]
+
+[node name="BackgroundDrawer" type="Node2D"]
+position = Vector2( -102, 0 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+scrollSpeed = 600
+
+[node name="BG1" type="Sprite" parent="."]
+position = Vector2( 718, -306 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 2 )
+
+[node name="BG2" type="Sprite" parent="."]
+position = Vector2( 718, 306 )
+scale = Vector2( 0.85, 0.85 )
+texture = ExtResource( 3 )
