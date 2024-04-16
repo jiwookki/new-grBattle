@@ -5,12 +5,16 @@ extends HealthTracker
 # var a = 2
 # var b = "text"
 
+signal on_player_damage
+
 var damagesounder : AudioStreamPlayer
 
 func take_damage(dmg):
 	damagesounder.play()
 	.take_damage(dmg)
+	print("danage")
 	emit_signal("on_health_change", health)
+	emit_signal("on_player_damage")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

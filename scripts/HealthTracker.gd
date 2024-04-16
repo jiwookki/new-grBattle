@@ -24,6 +24,7 @@ func take_damage(dmg):
 	
 	
 	
+	
 
 func die():
 	get_parent().queue_free()
