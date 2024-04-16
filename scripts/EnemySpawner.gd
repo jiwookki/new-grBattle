@@ -40,6 +40,7 @@ func _spawn():
 	_new_enemy.global_position = Vector2(rng.randi_range(spawn_x_min, spawn_x_max), position.y)
 	_new_enemy.connect("on_despawn", self, "_on_enemy_death")
 	_root.add_child(_new_enemy)
+	_root.move_child(_new_enemy, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

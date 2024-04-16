@@ -62,6 +62,7 @@ func _force_shoot():
 		var newbullet = bullet_prefab.instance()
 		newbullet.startShoot(shoot_speed, global_position)
 		root.add_child(newbullet)
+		root.move_child(newbullet, 0)
 	
 		
 func _process_cooldown(delta):

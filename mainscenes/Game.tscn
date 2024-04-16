@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://sprites/delta1-1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/PlayerMovement.gd" type="Script" id=2]
@@ -17,11 +17,16 @@
 [ext_resource path="res://sprites/delta1-0.png" type="Texture" id=15]
 [ext_resource path="res://audio/lasershoot.wav" type="AudioStream" id=16]
 [ext_resource path="res://mainscenes/Flashbang.gd" type="Script" id=17]
+[ext_resource path="res://sprites/bullet_bar.PNG" type="Texture" id=18]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=19]
 [ext_resource path="res://scripts/EnemySpawner.gd" type="Script" id=20]
+[ext_resource path="res://sprites/healthbar.PNG" type="Texture" id=21]
+[ext_resource path="res://mainscenes/AmmoBar.gd" type="Script" id=22]
+[ext_resource path="res://mainscenes/HealthBar.gd" type="Script" id=23]
+[ext_resource path="res://scripts/AmmoCounter.gd" type="Script" id=24]
 
 [sub_resource type="DynamicFont" id=2]
-size = 48
+size = 36
 font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -48,10 +53,22 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.3 ),
+"times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 0.894118, 0.576471, 0.65098 ), Color( 0, 0, 0, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("../CanvasModulate:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.894118, 0.576471, 0.572549 ), Color( 1, 1, 1, 0 ) ]
 }
 
 [sub_resource type="Animation" id=5]
@@ -67,6 +84,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("CanvasModulate:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [node name="Game" type="Node2D"]
@@ -86,41 +115,66 @@ anchor_bottom = 1.0
 color = Color( 0, 0, 0, 1 )
 
 [node name="AmmoDisp" type="Label" parent="Control"]
-margin_left = 19.0
-margin_top = 252.0
-margin_right = 210.0
-margin_bottom = 303.0
+margin_left = 59.0
+margin_top = 350.0
+margin_right = 250.0
+margin_bottom = 387.0
+rect_rotation = 90.0
 custom_fonts/font = SubResource( 2 )
 text = "Ammo: "
-script = ExtResource( 3 )
+script = ExtResource( 24 )
 prefix = "Ammo: "
 
 [node name="ScoreCounter" type="Label" parent="Control"]
 margin_left = 18.0
-margin_top = 71.0
+margin_top = 15.0
 margin_right = 209.0
-margin_bottom = 122.0
+margin_bottom = 66.0
 custom_fonts/font = SubResource( 4 )
 text = "Score:"
 script = ExtResource( 3 )
 prefix = "Score: "
 
 [node name="HealthDisp" type="Label" parent="Control"]
-margin_left = 17.0
-margin_top = 304.0
-margin_right = 208.0
-margin_bottom = 355.0
+margin_left = 130.0
+margin_top = 350.0
+margin_right = 321.0
+margin_bottom = 387.0
+rect_rotation = 90.0
 custom_fonts/font = SubResource( 2 )
 text = "Health:"
 script = ExtResource( 3 )
 prefix = "Health: "
+
+[node name="AmmoBar" type="TextureProgress" parent="Control"]
+margin_left = 27.0
+margin_top = 335.0
+margin_right = 302.0
+margin_bottom = 360.0
+rect_rotation = 270.0
+max_value = 8.0
+value = 8.0
+texture_progress = ExtResource( 18 )
+script = ExtResource( 22 )
+
+[node name="HealthBar" type="TextureProgress" parent="Control"]
+margin_left = 93.0
+margin_top = 342.0
+margin_right = 509.0
+margin_bottom = 398.0
+rect_rotation = 270.0
+rect_scale = Vector2( 0.65, 0.65 )
+max_value = 5.0
+value = 5.0
+texture_progress = ExtResource( 21 )
+script = ExtResource( 23 )
 
 [node name="Delta1" type="Area2D" parent="." groups=["player"]]
 position = Vector2( 498, 284 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 max_speed = 4.5
-lerp_rate = 14.0
+lerp_rate = 10.0
 
 [node name="Gun" type="Node2D" parent="Delta1"]
 position = Vector2( 0, -10 )
@@ -172,6 +226,10 @@ stream = ExtResource( 13 )
 autoplay = true
 script = ExtResource( 8 )
 
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+z_index = -4096
+
 [node name="ScreenFlash" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0 )
 margin_right = 960.0
@@ -188,13 +246,16 @@ anims/FadeOut = SubResource( 5 )
 script = ExtResource( 7 )
 
 [connection signal="game_over" from="." to="ParallaxBackground" method="_fadeout"]
-[connection signal="game_over" from="." to="ScreenFlash/FadeOut" method="_start_fadeout"]
 [connection signal="game_over" from="." to="MusicPlayer" method="_gameover"]
+[connection signal="game_over" from="." to="ScreenFlash/FadeOut" method="_start_fadeout"]
 [connection signal="score_changed" from="." to="Control/ScoreCounter" method="on_update_value"]
 [connection signal="area_entered" from="Delta1" to="Delta1/Health" method="_on_Delta1_area_entered"]
+[connection signal="reloading" from="Delta1/Gun" to="Control/AmmoBar" method="_on_Gun_reloading"]
 [connection signal="update_ammo_count" from="Delta1/Gun" to="Control/AmmoDisp" method="on_update_value"]
+[connection signal="update_ammo_count" from="Delta1/Gun" to="Control/AmmoBar" method="_update_value"]
 [connection signal="on_health_change" from="Delta1/Health" to="ParallaxBackground" method="_slowdown"]
-[connection signal="on_health_change" from="Delta1/Health" to="ScreenFlash/FadeOut" method="_flashbang"]
 [connection signal="on_health_change" from="Delta1/Health" to="Control/HealthDisp" method="on_update_value"]
+[connection signal="on_health_change" from="Delta1/Health" to="Control/HealthBar" method="_update_value"]
+[connection signal="on_health_change" from="Delta1/Health" to="ScreenFlash/FadeOut" method="_flashbang"]
 [connection signal="on_player_damage" from="Delta1/Health" to="ScreenFlash/Flashbang" method="_flash"]
 [connection signal="animation_finished" from="ScreenFlash/FadeOut" to="." method="faded_out"]

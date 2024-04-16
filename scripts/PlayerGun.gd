@@ -4,6 +4,8 @@ extends Gun
 
 signal update_ammo_count
 
+signal reloading
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -16,10 +18,12 @@ func _force_shoot():
 	._force_shoot()
 
 func _on_start_reload():
-	emit_signal("update_ammo_count", "Reload")
+	emit_signal("update_ammo_count", 0)
+	emit_signal("reloading", reload_time_seconds)
 
 func _on_finish_reload():
 	emit_signal("update_ammo_count", ammo)
+	
 
 func _on_ammo_change(newammo):
 	emit_signal("update_ammo_count", newammo)
