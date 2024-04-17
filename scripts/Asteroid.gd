@@ -5,9 +5,14 @@ extends "res://GameMovObj.gd"
 # var a = 2
 # var b = "text"
 
+export var fall_speed_max : float
+export var fall_speed_min: float
 
+export var fall_accel: float
 
-export var fall_speed : float
+onready var target_fall_speed = rand_range(fall_speed_min, fall_speed_max)
+
+var fall_velocity = 0
 
 export var knockback : int
 
@@ -25,7 +30,8 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	position.y += fall_speed * delta
+	fall_velocity = lerp(fall_velocity, target_fall_speed, delta * fall_accel)
+	position.y += fall_velocity * delta
 	if position.y > maxY:
 		emit_signal("on_despawn", true)
 		queue_free()
@@ -39,5 +45,5 @@ func _on_Asteroid_area_entered(area):
 		queue_free()
 	elif area.is_in_group("player_bullet"):
 		print("knocked")
-		position.y -= knockback
+		fall_velocity = knockback
 		blockSound.play()

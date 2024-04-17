@@ -13,8 +13,10 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
 }
-fall_speed = 325.0
-knockback = 300
+fall_speed_max = 600.0
+fall_speed_min = 1800.0
+fall_accel = 1.5
+knockback = -4000
 damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

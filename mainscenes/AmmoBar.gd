@@ -25,3 +25,8 @@ func _process(delta):
 func _on_Gun_reloading(rtime: float):
 	current_time = 0
 	max_time = rtime
+	modulate = Color(1, 1, 1, 0.4)
+
+
+func _finish_reloading():
+	modulate = Color(1, 1, 1, 1)

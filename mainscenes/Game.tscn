@@ -179,9 +179,9 @@ lerp_rate = 10.0
 [node name="Gun" type="Node2D" parent="Delta1"]
 position = Vector2( 0, -10 )
 script = ExtResource( 5 )
-reload_time_seconds = 5.0
-shoot_cooldown_secs = 0.4
-shoot_speed = Vector2( 0, -2000 )
+reload_time_seconds = 3.0
+shoot_cooldown_secs = 0.25
+shoot_speed = Vector2( 0, -2500 )
 
 [node name="ShootSounder" type="AudioStreamPlayer" parent="Delta1/Gun"]
 stream = ExtResource( 16 )
@@ -199,8 +199,9 @@ bus = "SFX"
 polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10, 7.33333, 0, 9, 10, 7.33333, 7.66667, -1, 2, -10 )
 
 [node name="Sprite" type="AnimatedSprite" parent="Delta1"]
-scale = Vector2( 0.342763, 0.324064 )
+scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
@@ -252,12 +253,12 @@ script = ExtResource( 7 )
 [connection signal="game_over" from="." to="ScreenFlash/FadeOut" method="_start_fadeout"]
 [connection signal="score_changed" from="." to="Control/ScoreCounter" method="on_update_value"]
 [connection signal="area_entered" from="Delta1" to="Delta1/Health" method="_on_Delta1_area_entered"]
+[connection signal="finish_reloading" from="Delta1/Gun" to="Control/AmmoBar" method="_finish_reloading"]
 [connection signal="reloading" from="Delta1/Gun" to="Control/AmmoBar" method="_on_Gun_reloading"]
 [connection signal="update_ammo_count" from="Delta1/Gun" to="Control/AmmoDisp" method="on_update_value"]
 [connection signal="update_ammo_count" from="Delta1/Gun" to="Control/AmmoBar" method="_update_value"]
 [connection signal="on_health_change" from="Delta1/Health" to="ParallaxBackground" method="_slowdown"]
 [connection signal="on_health_change" from="Delta1/Health" to="Control/HealthDisp" method="on_update_value"]
 [connection signal="on_health_change" from="Delta1/Health" to="Control/HealthBar" method="_update_value"]
-[connection signal="on_health_change" from="Delta1/Health" to="ScreenFlash/FadeOut" method="_flashbang"]
 [connection signal="on_player_damage" from="Delta1/Health" to="ScreenFlash/Flashbang" method="_flash"]
 [connection signal="animation_finished" from="ScreenFlash/FadeOut" to="." method="faded_out"]
