@@ -174,7 +174,7 @@ position = Vector2( 498, 284 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 max_speed = 4.5
-lerp_rate = 10.0
+lerp_rate = 9.0
 
 [node name="Gun" type="Node2D" parent="Delta1"]
 position = Vector2( 0, -10 )
@@ -201,14 +201,14 @@ polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10, 7.33333, 0, 9, 10, 7.333
 [node name="Sprite" type="AnimatedSprite" parent="Delta1"]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="AsteroidSpawner" type="Node2D" parent="."]
 position = Vector2( 619, -236 )
+scale = Vector2( 0.99791, 1 )
 script = ExtResource( 20 )
 score = 100
-spawn_rate = 200
+spawn_rate = 350
 spawn_x_min = 350
 spawn_x_max = 890
 enemy_scene = ExtResource( 12 )

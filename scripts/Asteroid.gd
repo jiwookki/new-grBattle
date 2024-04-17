@@ -8,6 +8,9 @@ extends "res://GameMovObj.gd"
 export var fall_speed_max : float
 export var fall_speed_min: float
 
+export var size_min: float
+export var size_max: float
+
 export var fall_accel: float
 
 onready var target_fall_speed = rand_range(fall_speed_min, fall_speed_max)
@@ -26,6 +29,8 @@ func _ready():
 	minY = -200
 	maxY = get_viewport_rect().size.y + get_node("./Sprite").texture.get_height() / 2
 	blockSound = get_node("./AsteroidBlockSound")
+	var sx = rand_range(size_min, size_max)
+	scale = Vector2(sx, sx)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

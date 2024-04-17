@@ -15,7 +15,9 @@ __meta__ = {
 }
 fall_speed_max = 600.0
 fall_speed_min = 1800.0
-fall_accel = 1.5
+size_min = 0.5
+size_max = 1.2
+fall_accel = 1.2
 knockback = -2500
 damage = 1
 
