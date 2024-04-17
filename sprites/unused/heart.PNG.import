@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/backdrop2.jpg-ff81f0fb1e93aeee91c136bbaaee1b5d.stex"
+path="res://.import/heart.PNG-220efedce4a50acbbc6eb52bd7a11442.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/backdrop2.jpg"
-dest_files=[ "res://.import/backdrop2.jpg-ff81f0fb1e93aeee91c136bbaaee1b5d.stex" ]
+source_file="res://sprites/unused/heart.PNG"
+dest_files=[ "res://.import/heart.PNG-220efedce4a50acbbc6eb52bd7a11442.stex" ]
 
 [params]
 

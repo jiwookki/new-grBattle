@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/layer_5.BMP-59cf17dd8798b29368693b91263063c6.stex"
+path="res://.import/layer_5.BMP-a2f40162bea801019418928fc1937728.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/layer_5.BMP"
-dest_files=[ "res://.import/layer_5.BMP-59cf17dd8798b29368693b91263063c6.stex" ]
+source_file="res://sprites/unused/layer_5.BMP"
+dest_files=[ "res://.import/layer_5.BMP-a2f40162bea801019418928fc1937728.stex" ]
 
 [params]
 

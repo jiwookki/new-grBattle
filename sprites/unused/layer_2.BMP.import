@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/layer_3.BMP-80797f6f524875058aaf4e08c52f882f.stex"
+path="res://.import/layer_2.BMP-d60bf7e92d10c268b1855644d4c9c167.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/layer_3.BMP"
-dest_files=[ "res://.import/layer_3.BMP-80797f6f524875058aaf4e08c52f882f.stex" ]
+source_file="res://sprites/unused/layer_2.BMP"
+dest_files=[ "res://.import/layer_2.BMP-d60bf7e92d10c268b1855644d4c9c167.stex" ]
 
 [params]
 
