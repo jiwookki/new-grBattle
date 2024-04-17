@@ -43,7 +43,7 @@ func _spawn():
 	_root.move_child(_new_enemy, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if _spawning:
 		_currentSpawn += 1
 	if _currentSpawn >= _nextSpawn:

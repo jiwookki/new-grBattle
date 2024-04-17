@@ -42,6 +42,7 @@ func _process(delta):
 func _on_Asteroid_area_entered(area):
 	if area.is_in_group("player"):
 		print("dead")
+		emit_signal("on_despawn", true)
 		queue_free()
 	elif area.is_in_group("player_bullet"):
 		print("knocked")

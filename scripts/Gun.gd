@@ -30,7 +30,7 @@ var root : Node
 # var b = "text"
 
 
-func _on_ammo_change(newammo):
+func _on_ammo_change(_newammo):
 	pass # override
 
 func _on_start_reload():
@@ -83,7 +83,7 @@ func _ready():
 	root = get_node("/root/Game")
 		
 		
-func _gun_process(delta):
+func _gun_process(_delta):
 	pass # override 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

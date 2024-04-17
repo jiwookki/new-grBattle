@@ -15,5 +15,5 @@ func _ready():
 #func _process(delta):
 #	pass
 
-func on_animation_finished(anim_name):
+func on_animation_finished(_anim_name):
 	get_node("/root/Control").add_child(game_over_display.instance())

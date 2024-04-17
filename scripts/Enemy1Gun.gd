@@ -11,5 +11,5 @@ func _ready():
 
 
 # Called when the node enters the scene tree for the first time.
-func _gun_process(delta):
+func _gun_process(_delta):
 	_shoot()

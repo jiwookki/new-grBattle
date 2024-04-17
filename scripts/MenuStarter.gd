@@ -12,7 +12,7 @@ func start_game():
 	get_tree().change_scene("res://mainscenes/Game.tscn")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		text = "Loading..."
 		start_game()

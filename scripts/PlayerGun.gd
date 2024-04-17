@@ -43,7 +43,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _gun_process(delta):
+func _gun_process(_delta):
 	if Input.is_action_just_pressed("player_shoot"):
 		_shoot()
 

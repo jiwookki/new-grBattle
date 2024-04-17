@@ -33,6 +33,6 @@ func on_game_over():
 	
 	
 
-func faded_out(anim_name):
+func faded_out(_anim_name):
 	get_tree().change_scene("res://mainscenes/GameOver.tscn")
 	queue_free()

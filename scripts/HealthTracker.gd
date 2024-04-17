@@ -30,6 +30,6 @@ func die():
 	get_parent().queue_free()
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if health <= 0:
 		die()

@@ -16,7 +16,7 @@ __meta__ = {
 fall_speed_max = 600.0
 fall_speed_min = 1800.0
 fall_accel = 1.5
-knockback = -4000
+knockback = -2500
 damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

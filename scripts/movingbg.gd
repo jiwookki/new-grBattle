@@ -25,6 +25,6 @@ func _process(delta):
 func _fadeout():
 	target_speed = 0
 	
-func _slowdown(health):
+func _slowdown(_health):
 	scroll_speed = 500
 	

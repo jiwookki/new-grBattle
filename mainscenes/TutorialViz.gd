@@ -17,5 +17,5 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	position = initialPosition + Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down") * viz_displacement
