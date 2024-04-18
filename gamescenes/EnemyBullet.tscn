@@ -8,7 +8,7 @@ position = Vector2( 505, 254 )
 scale = Vector2( 3, 3 )
 script = ExtResource( 2 )
 lifetime = 3.0
-damage = 1
+damage = 15
 piercing = 1
 damaging_group = "player"
 

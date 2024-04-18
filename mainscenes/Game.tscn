@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://sprites/delta1-1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/PlayerMovement.gd" type="Script" id=2]
@@ -20,7 +20,6 @@
 [ext_resource path="res://sprites/bullet_bar.PNG" type="Texture" id=18]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=19]
 [ext_resource path="res://scripts/EnemySpawner.gd" type="Script" id=20]
-[ext_resource path="res://sprites/healthbar.PNG" type="Texture" id=21]
 [ext_resource path="res://mainscenes/AmmoBar.gd" type="Script" id=22]
 [ext_resource path="res://mainscenes/HealthBar.gd" type="Script" id=23]
 [ext_resource path="res://scripts/AmmoCounter.gd" type="Script" id=24]
@@ -36,6 +35,15 @@ font_data = ExtResource( 4 )
 [sub_resource type="DynamicFont" id=2]
 size = 36
 font_data = ExtResource( 4 )
+
+[sub_resource type="Gradient" id=10]
+offsets = PoolRealArray( 0.0116959, 0.988304 )
+colors = PoolColorArray( 0.589346, 0, 0, 1, 0.510146, 1, 0.238901, 1 )
+
+[sub_resource type="GradientTexture2D" id=11]
+gradient = SubResource( 10 )
+width = 350
+height = 48
 
 [sub_resource type="Gradient" id=8]
 colors = PoolColorArray( 1, 0.53217, 0.0718816, 1, 0.560402, 1, 0.264271, 1 )
@@ -181,15 +189,14 @@ texture_progress = ExtResource( 18 )
 script = ExtResource( 22 )
 
 [node name="HealthBar" type="TextureProgress" parent="Control"]
-margin_left = 74.0
-margin_top = 339.0
-margin_right = 490.0
-margin_bottom = 395.0
+margin_left = 76.0
+margin_top = 329.0
+margin_right = 425.0
+margin_bottom = 393.0
 rect_rotation = 270.0
 rect_scale = Vector2( 0.65, 0.65 )
-max_value = 5.0
 value = 5.0
-texture_progress = ExtResource( 21 )
+texture_progress = SubResource( 11 )
 script = ExtResource( 23 )
 
 [node name="BoostBar" type="TextureProgress" parent="Control"]
@@ -231,7 +238,7 @@ bus = "SFX"
 
 [node name="Health" parent="Delta1" instance=ExtResource( 10 )]
 script = ExtResource( 14 )
-starting_health = 5
+starting_health = 100
 
 [node name="PlayerDamageSounder" type="AudioStreamPlayer" parent="Delta1/Health"]
 stream = ExtResource( 9 )
@@ -243,6 +250,7 @@ polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10.3, 7.5, 0, 9, 10.3, 7.5, 
 [node name="Sprite" type="AnimatedSprite" parent="Delta1"]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [node name="DashPlayer" type="AudioStreamPlayer" parent="Delta1"]
@@ -278,10 +286,10 @@ z_index = -4096
 
 [node name="ScreenFlash" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = -557.0
-margin_top = -602.0
-margin_right = 1534.0
-margin_bottom = 1575.0
+margin_left = -558.0
+margin_top = -597.0
+margin_right = 1533.0
+margin_bottom = 1580.0
 
 [node name="Flashbang" type="AnimationPlayer" parent="ScreenFlash"]
 root_node = NodePath("../../ParallaxBackground")
