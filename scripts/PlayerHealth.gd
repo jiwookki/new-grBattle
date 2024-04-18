@@ -31,5 +31,6 @@ func die():
 
 
 func _on_Delta1_area_entered(area):
+	print("pow")
 	if area.is_in_group("player_damager"):
 		take_damage(area.damage)

@@ -35,8 +35,8 @@ position = Vector2( -4, 45 )
 script = ExtResource( 2 )
 max_ammo = 12
 reload_time_seconds = 3.0
-shoot_cooldown_secs = 0.8
-shoot_speed = Vector2( 0, 1200 )
+shoot_cooldown_secs = 1.2
+shoot_speed = Vector2( 0, 900 )
 
 [node name="Health" parent="." instance=ExtResource( 1 )]
 script = ExtResource( 6 )
