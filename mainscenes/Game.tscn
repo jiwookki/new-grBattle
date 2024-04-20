@@ -221,7 +221,7 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-max_speed = 3.0
+max_speed = 4.5
 lerp_rate = 4.0
 dash_speed = 7.0
 dash_lerp = 120.0
@@ -254,6 +254,7 @@ polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10.3, 7.5, 0, 9, 10.3, 7.5, 
 [node name="Sprite" type="AnimatedSprite" parent="Delta1"]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [node name="DashPlayer" type="AudioStreamPlayer" parent="Delta1"]
