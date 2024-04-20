@@ -17,7 +17,7 @@ export var shoot_cooldown_secs : float
 
 export var shoot_speed : Vector2
 
-var ammo = max_ammo
+onready var ammo = max_ammo
 
 var cooldown = 0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://sprites/delta1-1.png" type="Texture" id=1]
 [ext_resource path="res://scripts/PlayerMovement.gd" type="Script" id=2]
@@ -20,11 +20,14 @@
 [ext_resource path="res://sprites/bullet_bar.PNG" type="Texture" id=18]
 [ext_resource path="res://scripts/Game.gd" type="Script" id=19]
 [ext_resource path="res://scripts/EnemySpawner.gd" type="Script" id=20]
+[ext_resource path="res://sprites/textures/playerbar_empty.tres" type="Gradient" id=21]
 [ext_resource path="res://mainscenes/AmmoBar.gd" type="Script" id=22]
 [ext_resource path="res://mainscenes/HealthBar.gd" type="Script" id=23]
 [ext_resource path="res://scripts/AmmoCounter.gd" type="Script" id=24]
 [ext_resource path="res://mainscenes/BoostBar.gd" type="Script" id=25]
 [ext_resource path="res://audio/dashswoosh.wav" type="AudioStream" id=26]
+[ext_resource path="res://sprites/textures/player_boostbar.tres" type="Gradient" id=27]
+[ext_resource path="res://sprites/textures/player_healthbar.tres" type="Texture" id=28]
 
 [sub_resource type="DynamicFont" id=4]
 size = 36
@@ -36,20 +39,18 @@ font_data = ExtResource( 4 )
 size = 36
 font_data = ExtResource( 4 )
 
-[sub_resource type="Gradient" id=10]
-offsets = PoolRealArray( 0.0116959, 0.988304 )
-colors = PoolColorArray( 0.589346, 0, 0, 1, 0.510146, 1, 0.238901, 1 )
-
-[sub_resource type="GradientTexture2D" id=11]
-gradient = SubResource( 10 )
+[sub_resource type="GradientTexture2D" id=13]
+gradient = ExtResource( 21 )
 width = 350
 height = 48
 
-[sub_resource type="Gradient" id=8]
-colors = PoolColorArray( 1, 0.53217, 0.0718816, 1, 0.560402, 1, 0.264271, 1 )
+[sub_resource type="GradientTexture2D" id=14]
+gradient = ExtResource( 21 )
+width = 192
+height = 32
 
 [sub_resource type="GradientTexture2D" id=9]
-gradient = SubResource( 8 )
+gradient = ExtResource( 27 )
 width = 192
 height = 32
 
@@ -145,10 +146,10 @@ script = ExtResource( 3 )
 prefix = "Score: "
 
 [node name="AmmoDisp" type="Label" parent="Control"]
-margin_left = 59.0
-margin_top = 347.0
-margin_right = 260.0
-margin_bottom = 384.0
+margin_left = 56.0
+margin_top = 369.0
+margin_right = 257.0
+margin_bottom = 406.0
 rect_rotation = 90.0
 custom_fonts/font = SubResource( 2 )
 text = "Ammo: "
@@ -156,10 +157,10 @@ script = ExtResource( 24 )
 prefix = "Ammo: "
 
 [node name="HealthDisp" type="Label" parent="Control"]
-margin_left = 110.0
-margin_top = 347.0
-margin_right = 318.0
-margin_bottom = 384.0
+margin_left = 107.0
+margin_top = 369.0
+margin_right = 315.0
+margin_bottom = 406.0
 rect_rotation = 90.0
 custom_fonts/font = SubResource( 2 )
 text = "Health:"
@@ -167,10 +168,10 @@ script = ExtResource( 3 )
 prefix = "Health: "
 
 [node name="BoostDisp" type="Label" parent="Control"]
-margin_left = 168.0
-margin_top = 347.0
-margin_right = 359.0
-margin_bottom = 384.0
+margin_left = 165.0
+margin_top = 369.0
+margin_right = 356.0
+margin_bottom = 406.0
 rect_rotation = 90.0
 custom_fonts/font = SubResource( 2 )
 text = "Boost: "
@@ -178,36 +179,38 @@ script = ExtResource( 3 )
 prefix = "Health: "
 
 [node name="AmmoBar" type="TextureProgress" parent="Control"]
-margin_left = 27.0
-margin_top = 332.0
-margin_right = 302.0
-margin_bottom = 357.0
+margin_left = 24.0
+margin_top = 357.0
+margin_right = 308.0
+margin_bottom = 382.0
 rect_rotation = 270.0
-max_value = 8.0
-value = 8.0
+max_value = 10.0
+value = 10.0
 texture_progress = ExtResource( 18 )
 script = ExtResource( 22 )
 
 [node name="HealthBar" type="TextureProgress" parent="Control"]
-margin_left = 76.0
-margin_top = 329.0
-margin_right = 425.0
-margin_bottom = 393.0
+margin_left = 72.0
+margin_top = 351.0
+margin_right = 422.0
+margin_bottom = 415.0
 rect_rotation = 270.0
 rect_scale = Vector2( 0.65, 0.65 )
-value = 5.0
-texture_progress = SubResource( 11 )
+value = 100.0
+texture_under = SubResource( 13 )
+texture_progress = ExtResource( 28 )
 script = ExtResource( 23 )
 
 [node name="BoostBar" type="TextureProgress" parent="Control"]
-margin_left = 133.0
-margin_top = 326.0
-margin_right = 323.0
-margin_bottom = 390.0
+margin_left = 130.0
+margin_top = 351.0
+margin_right = 2178.0
+margin_bottom = 415.0
 rect_rotation = 270.0
 step = 0.002
 value = 100.0
 allow_greater = true
+texture_under = SubResource( 14 )
 texture_progress = SubResource( 9 )
 script = ExtResource( 25 )
 
@@ -220,14 +223,15 @@ __meta__ = {
 }
 max_speed = 3.0
 lerp_rate = 4.0
-dash_speed = 8.0
+dash_speed = 7.0
 dash_lerp = 120.0
-dash_capacity = 0.3
-dash_regen_muliplier = 0.07
+dash_capacity = 0.25
+dash_regen_muliplier = 0.05
 
 [node name="Gun" type="Node2D" parent="Delta1"]
-position = Vector2( 0, -10 )
+position = Vector2( 0.400009, -10 )
 script = ExtResource( 5 )
+max_ammo = 10
 reload_time_seconds = 2.5
 shoot_cooldown_secs = 0.25
 shoot_speed = Vector2( 0, -2500 )
@@ -250,7 +254,6 @@ polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10.3, 7.5, 0, 9, 10.3, 7.5, 
 [node name="Sprite" type="AnimatedSprite" parent="Delta1"]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="DashPlayer" type="AudioStreamPlayer" parent="Delta1"]
@@ -278,6 +281,7 @@ enemy_scene = ExtResource( 11 )
 [node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 13 )
 autoplay = true
+bus = "Music"
 script = ExtResource( 8 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
