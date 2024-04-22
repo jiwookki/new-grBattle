@@ -41,17 +41,17 @@ font_data = ExtResource( 4 )
 
 [sub_resource type="GradientTexture2D" id=13]
 gradient = ExtResource( 21 )
-width = 350
+width = 280
 height = 48
 
 [sub_resource type="GradientTexture2D" id=14]
 gradient = ExtResource( 21 )
-width = 192
+width = 284
 height = 32
 
 [sub_resource type="GradientTexture2D" id=9]
 gradient = ExtResource( 27 )
-width = 192
+width = 280
 height = 32
 
 [sub_resource type="SpriteFrames" id=6]
@@ -146,9 +146,9 @@ script = ExtResource( 3 )
 prefix = "Score: "
 
 [node name="AmmoDisp" type="Label" parent="Control"]
-margin_left = 56.0
+margin_left = 57.0
 margin_top = 369.0
-margin_right = 257.0
+margin_right = 258.0
 margin_bottom = 406.0
 rect_rotation = 90.0
 custom_fonts/font = SubResource( 2 )
@@ -168,13 +168,13 @@ script = ExtResource( 3 )
 prefix = "Health: "
 
 [node name="BoostDisp" type="Label" parent="Control"]
-margin_left = 165.0
-margin_top = 369.0
-margin_right = 356.0
-margin_bottom = 406.0
+margin_left = 173.0
+margin_top = 367.0
+margin_right = 364.0
+margin_bottom = 404.0
 rect_rotation = 90.0
 custom_fonts/font = SubResource( 2 )
-text = "Boost: "
+text = "Fuel:"
 script = ExtResource( 3 )
 prefix = "Health: "
 
@@ -195,17 +195,16 @@ margin_top = 351.0
 margin_right = 422.0
 margin_bottom = 415.0
 rect_rotation = 270.0
-rect_scale = Vector2( 0.65, 0.65 )
 value = 100.0
 texture_under = SubResource( 13 )
 texture_progress = ExtResource( 28 )
 script = ExtResource( 23 )
 
 [node name="BoostBar" type="TextureProgress" parent="Control"]
-margin_left = 130.0
-margin_top = 351.0
-margin_right = 2178.0
-margin_bottom = 415.0
+margin_left = 138.0
+margin_top = 349.0
+margin_right = 422.0
+margin_bottom = 397.0
 rect_rotation = 270.0
 step = 0.002
 value = 100.0
@@ -221,19 +220,19 @@ script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true
 }
-max_speed = 4.5
+max_speed = 270.0
 lerp_rate = 4.0
-dash_speed = 7.0
-dash_lerp = 120.0
-dash_capacity = 0.25
-dash_regen_muliplier = 0.05
+fuel_drain_multiplier = 0.05
+dash_speed = 600.0
+dash_lerp = 500.0
+dash_regen_muliplier = 0.8
 
 [node name="Gun" type="Node2D" parent="Delta1"]
 position = Vector2( 0.400009, -10 )
 script = ExtResource( 5 )
 max_ammo = 10
-reload_time_seconds = 2.5
-shoot_cooldown_secs = 0.25
+reload_time_seconds = 3.0
+shoot_cooldown_secs = 0.15
 shoot_speed = Vector2( 0, -2500 )
 
 [node name="ShootSounder" type="AudioStreamPlayer" parent="Delta1/Gun"]
@@ -291,9 +290,9 @@ z_index = -4096
 
 [node name="ScreenFlash" type="ColorRect" parent="."]
 modulate = Color( 0, 0, 0, 0 )
-margin_left = -558.0
+margin_left = -552.0
 margin_top = -597.0
-margin_right = 1533.0
+margin_right = 1539.0
 margin_bottom = 1580.0
 
 [node name="Flashbang" type="AnimationPlayer" parent="ScreenFlash"]

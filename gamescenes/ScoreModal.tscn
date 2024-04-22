@@ -1,9 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://mainscenes/ScoreDisplay.gd" type="Script" id=2]
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=3]
 [ext_resource path="res://audio/select.wav" type="AudioStream" id=4]
+
+[sub_resource type="DynamicFont" id=5]
+size = 42
+font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 48
@@ -31,26 +35,42 @@ tracks/0/keys = {
 "values": [ 0.0, 360.0 ]
 }
 
+[sub_resource type="DynamicFont" id=6]
+size = 32
+font_data = ExtResource( 1 )
+
 [node name="ScoreModal" type="Node2D"]
 
+[node name="HighScore" type="Label" parent="."]
+margin_left = 354.0
+margin_top = 276.0
+margin_right = 639.0
+margin_bottom = 331.0
+rect_pivot_offset = Vector2( -801, -560 )
+custom_colors/font_color = Color( 1, 0.984314, 0.0431373, 1 )
+custom_fonts/font = SubResource( 5 )
+text = "High score:"
+
 [node name="Title2" type="Label" parent="."]
-margin_left = 371.0
-margin_top = 266.0
-margin_right = 656.0
-margin_bottom = 321.0
+margin_left = 353.0
+margin_top = 221.0
+margin_right = 638.0
+margin_bottom = 276.0
 custom_fonts/font = SubResource( 3 )
 text = "Your score was "
 
 [node name="ScoreDisplay" type="Label" parent="."]
-margin_left = 650.0
-margin_top = 269.0
-margin_right = 726.0
-margin_bottom = 370.0
+margin_left = 632.0
+margin_top = 224.0
+margin_right = 708.0
+margin_bottom = 325.0
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "0000
 "
 script = ExtResource( 2 )
+high_score_node = NodePath("../HighScore")
+date_time_node = NodePath("../datetime")
 
 [node name="Delta11" type="Sprite" parent="."]
 position = Vector2( 295, 291 )
@@ -64,3 +84,12 @@ anims/GameOver = SubResource( 4 )
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
 autoplay = true
+
+[node name="datetime" type="Label" parent="."]
+margin_left = 353.0
+margin_top = 324.0
+margin_right = 638.0
+margin_bottom = 379.0
+custom_colors/font_color = Color( 0.509804, 0.509804, 0.509804, 1 )
+custom_fonts/font = SubResource( 6 )
+text = "date and time"

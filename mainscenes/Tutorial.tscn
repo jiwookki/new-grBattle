@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://sprites/delta1_1.png" type="Texture" id=2]
@@ -15,7 +15,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 48
+size = 36
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -40,12 +40,29 @@ tracks/0/keys = {
 "values": [ Vector2( 141, 194 ), Vector2( 341, 194 ), Vector2( 141, 194 ) ]
 }
 
+[sub_resource type="Animation" id=5]
+resource_name = "pulse"
+length = 3.0
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Start:rect_scale")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1, 2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Backdrop" type="Sprite" parent="."]
-position = Vector2( 239, 281 )
+position = Vector2( 223, 281 )
 scale = Vector2( 0.534722, 0.518056 )
 texture = ExtResource( 4 )
 
@@ -58,38 +75,45 @@ custom_fonts/font = SubResource( 1 )
 text = "How to play"
 
 [node name="Title2" type="Label" parent="."]
-margin_left = 484.0
-margin_top = 85.0
-margin_right = 769.0
-margin_bottom = 342.0
+margin_left = 440.0
+margin_top = 101.0
+margin_right = 944.0
+margin_bottom = 378.0
 rect_pivot_offset = Vector2( 197, 129 )
 custom_fonts/font = SubResource( 3 )
-text = "Use D-Pad or 
-WASD to move
-
-Press Space or 
-Cross to shoot"
+text = "Use D-Pad or left stick to move 
+Cross to shoot
+Use L / R to dash
+You have limited fuel and ammo tanks
+which regenerate automatically,
+but you cannot move if your fuel 
+tanks run dry."
 
 [node name="Title3" type="Label" parent="."]
-margin_left = 481.0
-margin_top = 369.0
-margin_right = 899.0
-margin_bottom = 530.0
+margin_left = 441.0
+margin_top = 393.0
+margin_right = 889.0
+margin_bottom = 554.0
 rect_scale = Vector2( 0.997092, 1.00242 )
 rect_pivot_offset = Vector2( 197, 129 )
 custom_fonts/font = SubResource( 3 )
 text = "Shoot down the aliens
 and avoid the falling 
-asteroids"
+asteroids. Aim for a high score."
 
 [node name="Start" type="Label" parent="."]
-margin_left = 51.0
-margin_top = 483.0
-margin_right = 428.0
-margin_bottom = 532.0
+anchor_left = 0.59423
+anchor_top = 0.5
+anchor_right = 603.039
+anchor_bottom = 0.5
+margin_left = -460.461
+margin_top = 209.0
+margin_right = -578599.0
+margin_bottom = 258.0
+rect_scale = Vector2( 1.07231, 1.07231 )
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Press Space or Cross to start"
+text = "Press x to start"
 script = ExtResource( 3 )
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -101,11 +125,16 @@ autoplay = "Pacing"
 anims/Pacing = SubResource( 4 )
 
 [node name="FakeEnemy" type="Sprite" parent="AnimationPlayer"]
-position = Vector2( 287.635, 194 )
+position = Vector2( 141, 194 )
 texture = ExtResource( 6 )
 
 [node name="Delta12" type="Sprite" parent="AnimationPlayer"]
-position = Vector2( 237, 372 )
+position = Vector2( 220, 357 )
 texture = ExtResource( 2 )
 script = ExtResource( 7 )
-viz_displacement = 30
+viz_displacement = 45
+viz_dash = 100
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+autoplay = "pulse"
+anims/pulse = SubResource( 5 )
