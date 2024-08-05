@@ -51,10 +51,11 @@ func _fuel_regen(delta):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	_accel = Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down")
+	
 	
 	_dash = Input.get_axis("dash_left", "dash_right")
-	
+	#_accel = Input.get_vector("movement_left", "movement_right", "movement_up", "movement_down")
+	_accel = Vector2(Input.get_axis("movement_left", "movement_right"), Input.get_axis("movement_up", "movement_down")).normalized()
 	position += _velocity * delta
 	
 	if fuel > 0 and _dash_recharging == false:

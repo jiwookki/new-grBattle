@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://VT323-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://gamescenes/ScoreModal.tscn" type="PackedScene" id=2]
@@ -45,6 +45,9 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 960, 544 )
+
 [node name="Control" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -78,5 +81,9 @@ anims/FadeOut = SubResource( 6 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="FadeIn"]
 color = Color( 0, 0, 0, 1 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource( 7 )
+action = "ui_accept"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="Start" method="on_animation_finished"]
