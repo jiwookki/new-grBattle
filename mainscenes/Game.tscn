@@ -150,6 +150,7 @@ pressed = ExtResource( 31 )
 shape = SubResource( 16 )
 passby_press = true
 action = "movement_left"
+visibility_mode = 1
 
 [node name="RM" type="TouchScreenButton" parent="."]
 modulate = Color( 1, 1, 1, 0.807843 )
@@ -162,6 +163,7 @@ pressed = ExtResource( 31 )
 shape = SubResource( 17 )
 passby_press = true
 action = "movement_right"
+visibility_mode = 1
 
 [node name="DM" type="TouchScreenButton" parent="."]
 modulate = Color( 1, 1, 1, 0.807843 )
@@ -174,6 +176,7 @@ pressed = ExtResource( 31 )
 shape = SubResource( 18 )
 passby_press = true
 action = "movement_down"
+visibility_mode = 1
 
 [node name="UM" type="TouchScreenButton" parent="."]
 modulate = Color( 1, 1, 1, 0.807843 )
@@ -186,6 +189,7 @@ pressed = ExtResource( 31 )
 shape = SubResource( 19 )
 passby_press = true
 action = "movement_up"
+visibility_mode = 1
 
 [node name="ShootButton" type="TouchScreenButton" parent="."]
 modulate = Color( 1, 1, 1, 0.607843 )
@@ -196,6 +200,7 @@ normal = ExtResource( 29 )
 pressed = ExtResource( 32 )
 shape = SubResource( 15 )
 action = "player_shoot"
+visibility_mode = 1
 
 [node name="ParallaxBackground" parent="." instance=ExtResource( 6 )]
 scroll_offset = Vector2( 0, 1200 )
