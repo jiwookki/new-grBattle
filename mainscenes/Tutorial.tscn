@@ -61,8 +61,11 @@ tracks/0/keys = {
 extents = Vector2( 960, 544 )
 
 [node name="Control" type="Control"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -272.0
+margin_right = 960.0
+margin_bottom = 272.0
 
 [node name="Backdrop" type="Sprite" parent="."]
 position = Vector2( 223, 281 )
@@ -113,7 +116,6 @@ margin_left = -514.461
 margin_top = 207.0
 margin_right = -578536.0
 margin_bottom = 256.0
-rect_scale = Vector2( 1.07231, 1.07231 )
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Press x or touch to start"

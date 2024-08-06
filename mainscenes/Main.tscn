@@ -26,33 +26,48 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="TextureRect" type="TextureRect" parent="."]
-margin_left = 147.0
-margin_top = 53.0
-margin_right = 785.0
-margin_bottom = 317.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -319.0
+margin_top = -222.0
+margin_right = 319.0
+margin_bottom = 42.0
 texture = ExtResource( 2 )
 
 [node name="Title" type="Label" parent="."]
-margin_left = 314.0
-margin_top = 328.0
-margin_right = 634.0
-margin_bottom = 377.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -160.0
+margin_top = 48.0
+margin_right = 160.0
+margin_bottom = 97.0
 custom_fonts/font = SubResource( 1 )
 text = "Gamma Ray Battle"
 
 [node name="Title2" type="Label" parent="."]
-margin_left = 244.0
-margin_top = 507.0
-margin_right = 564.0
-margin_bottom = 556.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -225.0
+margin_top = -49.0
+margin_right = 225.0
 custom_fonts/font = SubResource( 3 )
 text = "Copyright (c) 2024 Jiwoo Lee Built 05.08.2024"
 
 [node name="Start" type="Label" parent="."]
-margin_left = 303.0
-margin_top = 407.0
-margin_right = 628.0
-margin_bottom = 456.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -162.5
+margin_top = 128.0
+margin_right = 162.5
+margin_bottom = 177.0
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Press x or touch to start"
