@@ -27,7 +27,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -300, 500 ]
+"values": [ -300, 350 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -53,18 +53,18 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Title" type="Label" parent="."]
-margin_left = 500.0
-margin_top = 130.0
-margin_right = 562.0
-margin_bottom = 195.0
+margin_left = 346.0
+margin_top = 101.0
+margin_right = 580.0
+margin_bottom = 166.0
 custom_fonts/font = SubResource( 1 )
 text = "Game Over"
 
 [node name="Start" type="Label" parent="."]
-margin_left = 324.0
-margin_top = 539.0
-margin_right = 913.0
-margin_bottom = 588.0
+margin_left = 167.0
+margin_top = 467.0
+margin_right = 794.0
+margin_bottom = 516.0
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Press [+] to go back to main menu"
@@ -81,6 +81,7 @@ anims/FadeOut = SubResource( 6 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="FadeIn"]
 visible = false
+color = Color( 0, 0, 0, 1 )
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource( 7 )

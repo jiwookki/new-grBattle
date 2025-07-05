@@ -39,12 +39,6 @@
 [sub_resource type="CircleShape2D" id=15]
 radius = 14.0
 
-[sub_resource type="DynamicFont" id=4]
-size = 48
-outline_color = Color( 0, 0.32549, 0.192157, 0 )
-use_filter = true
-font_data = ExtResource( 4 )
-
 [sub_resource type="DynamicFont" id=16]
 size = 30
 font_data = ExtResource( 4 )
@@ -74,17 +68,23 @@ anti_aliasing_size = 2.0
 
 [sub_resource type="GradientTexture2D" id=14]
 gradient = ExtResource( 21 )
-width = 291
+width = 236
 
 [sub_resource type="GradientTexture2D" id=9]
 gradient = ExtResource( 27 )
-width = 291
+width = 236
 
 [sub_resource type="GradientTexture2D" id=13]
 gradient = ExtResource( 21 )
-width = 291
+width = 236
 
 [sub_resource type="DynamicFont" id=17]
+font_data = ExtResource( 4 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 42
+outline_color = Color( 0, 0.32549, 0.192157, 0 )
+use_filter = true
 font_data = ExtResource( 4 )
 
 [sub_resource type="SpriteFrames" id=6]
@@ -110,7 +110,7 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("ScreenFlash:color")
+tracks/1/path = NodePath("ScreenFlash:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -119,10 +119,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("ScreenFlash:modulate")
+tracks/2/path = NodePath("ScreenFlash:color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -131,7 +131,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
 }
 
 [sub_resource type="Animation" id=7]
@@ -174,6 +174,8 @@ position = Vector2( 0, 1 )
 z_index = -4096
 
 [node name="LM" type="TouchScreenButton" parent="UI"]
+pause_mode = 1
+visible = false
 modulate = Color( 1, 1, 1, 0.807843 )
 position = Vector2( 75, 489 )
 scale = Vector2( 4, 4 )
@@ -186,6 +188,8 @@ action = "movement_left"
 visibility_mode = 1
 
 [node name="RM" type="TouchScreenButton" parent="UI"]
+pause_mode = 1
+visible = false
 modulate = Color( 1, 1, 1, 0.807843 )
 position = Vector2( 275, 553 )
 rotation = 3.14159
@@ -199,6 +203,8 @@ action = "movement_right"
 visibility_mode = 1
 
 [node name="DM" type="TouchScreenButton" parent="UI"]
+pause_mode = 1
+visible = false
 modulate = Color( 1, 1, 1, 0.807843 )
 position = Vector2( 143, 617 )
 rotation = -1.5708
@@ -212,6 +218,8 @@ action = "movement_down"
 visibility_mode = 1
 
 [node name="UM" type="TouchScreenButton" parent="UI"]
+pause_mode = 1
+visible = false
 modulate = Color( 1, 1, 1, 0.807843 )
 position = Vector2( 207, 425 )
 rotation = 1.5708
@@ -225,6 +233,8 @@ action = "movement_up"
 visibility_mode = 1
 
 [node name="ShootButton" type="TouchScreenButton" parent="UI"]
+pause_mode = 1
+visible = false
 modulate = Color( 1, 1, 1, 0.607843 )
 position = Vector2( 1046, 490 )
 scale = Vector2( 3, 3 )
@@ -237,7 +247,7 @@ visibility_mode = 1
 
 [node name="HUD" type="Control" parent="UI"]
 anchor_bottom = 1.0
-margin_right = 342.0
+margin_right = 288.0
 
 [node name="HUDbg" type="ColorRect" parent="UI/HUD"]
 anchor_right = 1.0
@@ -246,30 +256,19 @@ margin_left = 1.0
 margin_right = 1.0
 color = Color( 0.0431373, 0.0705882, 0.0901961, 1 )
 
-[node name="ScoreCounter" type="Label" parent="UI/HUD"]
-margin_left = 14.0
-margin_top = 657.0
-margin_right = 205.0
-margin_bottom = 708.0
-custom_colors/font_color = Color( 0, 0.952941, 1, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Score:"
-script = ExtResource( 3 )
-prefix = "Score: "
-
-[node name="Panel" type="Panel" parent="UI/HUD/ScoreCounter"]
-margin_left = 13.0
-margin_top = -633.0
-margin_right = 304.0
-margin_bottom = -250.0
+[node name="Panel" type="Panel" parent="UI/HUD"]
+margin_left = 27.0
+margin_top = 24.0
+margin_right = 263.0
+margin_bottom = 407.0
 theme = ExtResource( 34 )
 
-[node name="StatsPanel" type="Panel" parent="UI/HUD/ScoreCounter/Panel"]
+[node name="StatsPanel" type="Panel" parent="UI/HUD/Panel"]
 anchor_right = 1.0
 margin_bottom = 261.0
 theme = ExtResource( 34 )
 
-[node name="MTP" type="Label" parent="UI/HUD/ScoreCounter/Panel/StatsPanel"]
+[node name="MTP" type="Label" parent="UI/HUD/Panel/StatsPanel"]
 anchor_right = 1.0
 margin_left = -3.0
 margin_top = 225.0
@@ -281,10 +280,10 @@ text = "00:00:00"
 script = ExtResource( 36 )
 timer_ref = NodePath("Timer")
 
-[node name="Timer" type="Timer" parent="UI/HUD/ScoreCounter/Panel/StatsPanel/MTP"]
+[node name="Timer" type="Timer" parent="UI/HUD/Panel/StatsPanel/MTP"]
 autostart = true
 
-[node name="MTP2" type="Label" parent="UI/HUD/ScoreCounter/Panel/StatsPanel"]
+[node name="MTP2" type="Label" parent="UI/HUD/Panel/StatsPanel"]
 anchor_right = 1.0
 margin_left = -2.0
 margin_top = 190.0
@@ -293,13 +292,13 @@ margin_bottom = 227.0
 custom_fonts/font = SubResource( 2 )
 text = "MISSION TIME"
 
-[node name="InfosPanel" type="Panel" parent="UI/HUD/ScoreCounter/Panel"]
+[node name="InfosPanel" type="Panel" parent="UI/HUD/Panel"]
 anchor_right = 1.0
 margin_bottom = 175.0
 theme = ExtResource( 34 )
 custom_styles/panel = SubResource( 18 )
 
-[node name="BoostBar" type="TextureProgress" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="BoostBar" type="TextureProgress" parent="UI/HUD/Panel/InfosPanel"]
 show_behind_parent = true
 anchor_right = 1.0
 margin_right = 60.0
@@ -311,14 +310,14 @@ texture_under = SubResource( 14 )
 texture_progress = SubResource( 9 )
 script = ExtResource( 25 )
 
-[node name="BoostDisp2" type="Label" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="BoostDisp2" type="Label" parent="UI/HUD/Panel/InfosPanel"]
 anchor_right = 1.0
 margin_top = 13.0
 margin_bottom = 50.0
 custom_fonts/font = SubResource( 2 )
 text = "FUEL"
 
-[node name="BoostDisp" type="Label" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="BoostDisp" type="Label" parent="UI/HUD/Panel/InfosPanel"]
 anchor_right = 1.0
 margin_top = 13.0
 margin_bottom = 50.0
@@ -326,9 +325,9 @@ custom_fonts/font = SubResource( 2 )
 text = "XXX"
 align = 2
 script = ExtResource( 35 )
-player_ref = NodePath("../../../../../../Delta1")
+player_ref = NodePath("../../../../../Delta1")
 
-[node name="HealthBar" type="TextureProgress" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="HealthBar" type="TextureProgress" parent="UI/HUD/Panel/InfosPanel"]
 show_behind_parent = true
 anchor_top = 0.5
 anchor_right = 1.0
@@ -340,7 +339,7 @@ texture_under = SubResource( 13 )
 texture_progress = ExtResource( 28 )
 script = ExtResource( 23 )
 
-[node name="HealthDisp2" type="Label" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="HealthDisp2" type="Label" parent="UI/HUD/Panel/InfosPanel"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -351,7 +350,7 @@ margin_bottom = 23.5
 custom_fonts/font = SubResource( 2 )
 text = "HEALTH"
 
-[node name="HealthDisp" type="Label" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="HealthDisp" type="Label" parent="UI/HUD/Panel/InfosPanel"]
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
@@ -364,7 +363,7 @@ text = "XXX"
 align = 2
 script = ExtResource( 3 )
 
-[node name="AmmoBar" type="TextureProgress" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="AmmoBar" type="TextureProgress" parent="UI/HUD/Panel/InfosPanel"]
 show_behind_parent = true
 anchor_top = 1.0
 anchor_right = 1.0
@@ -373,13 +372,13 @@ margin_left = 5.0
 margin_top = -45.0
 margin_right = 5.0
 margin_bottom = -21.0
-rect_scale = Vector2( 1, 1.6 )
+rect_scale = Vector2( 0.85, 1.6 )
 max_value = 10.0
 value = 10.0
 texture_progress = ExtResource( 18 )
 script = ExtResource( 22 )
 
-[node name="AmmoDisp2" type="Label" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="AmmoDisp2" type="Label" parent="UI/HUD/Panel/InfosPanel"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -387,7 +386,7 @@ margin_top = -46.0
 custom_fonts/font = SubResource( 2 )
 text = "AMMO"
 
-[node name="AmmoDisp" type="Label" parent="UI/HUD/ScoreCounter/Panel/InfosPanel"]
+[node name="AmmoDisp" type="Label" parent="UI/HUD/Panel/InfosPanel"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -397,7 +396,7 @@ text = "X"
 align = 2
 script = ExtResource( 24 )
 
-[node name="ShipInfo2" type="Label" parent="UI/HUD/ScoreCounter/Panel"]
+[node name="ShipInfo2" type="Label" parent="UI/HUD/Panel"]
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -408,7 +407,7 @@ custom_colors/font_color = Color( 0.415686, 0.415686, 0.415686, 1 )
 custom_fonts/font = SubResource( 17 )
 text = "IMPI. SQD"
 
-[node name="ShipInfo" type="Label" parent="UI/HUD/ScoreCounter/Panel"]
+[node name="ShipInfo" type="Label" parent="UI/HUD/Panel"]
 anchor_right = 1.0
 margin_left = 6.0
 margin_top = 367.0
@@ -418,6 +417,17 @@ custom_colors/font_color = Color( 0.415686, 0.415686, 0.415686, 1 )
 custom_fonts/font = SubResource( 17 )
 text = "DELTA ONE HEADS-UP DISPLAY"
 align = 2
+
+[node name="ScoreCounter" type="Label" parent="UI/HUD"]
+margin_left = 14.0
+margin_top = 486.0
+margin_right = 205.0
+margin_bottom = 537.0
+custom_colors/font_color = Color( 0, 0.952941, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Score:"
+script = ExtResource( 3 )
+prefix = "Score: "
 
 [node name="Delta1" type="Area2D" parent="." groups=["player"]]
 position = Vector2( 498, 284 )
@@ -459,6 +469,7 @@ polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10.3, 7.5, 0, 9, 10.3, 7.5, 
 [node name="Sprite" type="AnimatedSprite" parent="Delta1"]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 6 )
+frame = 1
 playing = true
 
 [node name="DashPlayer" type="AudioStreamPlayer" parent="Delta1"]
@@ -522,11 +533,11 @@ color = Color( 1, 1, 1, 0 )
 [connection signal="game_over" from="." to="FadeOut" method="_start_fadeout"]
 [connection signal="score_changed" from="." to="UI/HUD/ScoreCounter" method="on_update_value"]
 [connection signal="area_entered" from="Delta1" to="Delta1/Health" method="_on_Delta1_area_entered"]
-[connection signal="finish_reloading" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoBar" method="_finish_reloading"]
-[connection signal="reloading" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoBar" method="_on_Gun_reloading"]
-[connection signal="update_ammo_count" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoBar" method="_update_value"]
-[connection signal="update_ammo_count" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoDisp" method="on_update_value"]
-[connection signal="on_health_change" from="Delta1/Health" to="UI/HUD/ScoreCounter/Panel/InfosPanel/HealthBar" method="_update_value"]
-[connection signal="on_health_change" from="Delta1/Health" to="UI/HUD/ScoreCounter/Panel/InfosPanel/HealthDisp" method="on_update_value"]
+[connection signal="finish_reloading" from="Delta1/Gun" to="UI/HUD/Panel/InfosPanel/AmmoBar" method="_finish_reloading"]
+[connection signal="reloading" from="Delta1/Gun" to="UI/HUD/Panel/InfosPanel/AmmoBar" method="_on_Gun_reloading"]
+[connection signal="update_ammo_count" from="Delta1/Gun" to="UI/HUD/Panel/InfosPanel/AmmoBar" method="_update_value"]
+[connection signal="update_ammo_count" from="Delta1/Gun" to="UI/HUD/Panel/InfosPanel/AmmoDisp" method="on_update_value"]
+[connection signal="on_health_change" from="Delta1/Health" to="UI/HUD/Panel/InfosPanel/HealthBar" method="_update_value"]
+[connection signal="on_health_change" from="Delta1/Health" to="UI/HUD/Panel/InfosPanel/HealthDisp" method="on_update_value"]
 [connection signal="on_player_damage" from="Delta1/Health" to="Flashbang" method="_flash"]
 [connection signal="animation_finished" from="FadeOut" to="." method="faded_out"]
