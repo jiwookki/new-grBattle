@@ -15,7 +15,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 50
+size = 36
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -65,8 +65,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Backdrop" type="Sprite" parent="."]
-position = Vector2( 270, 374 )
-scale = Vector2( 0.7, 0.7 )
+position = Vector2( 214, 278 )
+scale = Vector2( 0.5, 0.5 )
 texture = ExtResource( 4 )
 
 [node name="Title" type="Label" parent="."]
@@ -74,10 +74,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -145.0
-margin_top = -338.0
-margin_right = 141.0
-margin_bottom = -273.0
+margin_left = -161.0
+margin_top = -262.0
+margin_right = 125.0
+margin_bottom = -197.0
 custom_fonts/font = SubResource( 1 )
 text = "How to play"
 
@@ -86,10 +86,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -93.0
-margin_top = -250.0
-margin_right = 699.0
-margin_bottom = 153.0
+margin_left = -49.0
+margin_top = -185.0
+margin_right = 743.0
+margin_bottom = 218.0
 rect_pivot_offset = Vector2( 197, 129 )
 custom_fonts/font = SubResource( 3 )
 text = "Use D-Pad or left stick to move 
@@ -105,10 +105,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -97.0
-margin_top = 133.0
-margin_right = 543.0
-margin_bottom = 294.0
+margin_left = -49.0
+margin_top = 97.0
+margin_right = 591.0
+margin_bottom = 258.0
 rect_scale = Vector2( 0.997092, 1.00242 )
 rect_pivot_offset = Vector2( 197, 129 )
 custom_fonts/font = SubResource( 3 )
@@ -121,9 +121,9 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -162.5
+margin_left = -171.0
 margin_top = -49.0
-margin_right = 162.5
+margin_right = 154.0
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Press B or touch to start"
@@ -138,11 +138,11 @@ autoplay = "Pacing"
 anims/Pacing = SubResource( 4 )
 
 [node name="FakeEnemy" type="Sprite" parent="AnimationPlayer"]
-position = Vector2( 181, 194 )
+position = Vector2( 183, 196 )
 texture = ExtResource( 6 )
 
 [node name="Delta12" type="Sprite" parent="AnimationPlayer"]
-position = Vector2( 272, 436 )
+position = Vector2( 211, 367 )
 texture = ExtResource( 2 )
 script = ExtResource( 7 )
 viz_displacement = 45
