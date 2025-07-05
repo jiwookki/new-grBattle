@@ -37,11 +37,8 @@
 [ext_resource path="res://scripts/FuelCounter.gd" type="Script" id=35]
 [ext_resource path="res://mainscenes/timecounter.gd" type="Script" id=36]
 
-[sub_resource type="DynamicFont" id=4]
-size = 48
-outline_color = Color( 0, 0.32549, 0.192157, 0 )
-use_filter = true
-font_data = ExtResource( 4 )
+[sub_resource type="CircleShape2D" id=15]
+radius = 14.0
 
 [sub_resource type="DynamicFont" id=16]
 size = 30
@@ -85,8 +82,11 @@ width = 236
 [sub_resource type="DynamicFont" id=17]
 font_data = ExtResource( 4 )
 
-[sub_resource type="CircleShape2D" id=15]
-radius = 14.0
+[sub_resource type="DynamicFont" id=4]
+size = 48
+outline_color = Color( 0, 0.32549, 0.192157, 0 )
+use_filter = true
+font_data = ExtResource( 4 )
 
 [sub_resource type="DynamicFont" id=20]
 size = 36
@@ -107,56 +107,16 @@ animations = [ {
 [sub_resource type="Animation" id=5]
 resource_name = "FadeOut"
 tracks/0/type = "value"
-tracks/0/path = NodePath("UI/CanvasModulateUI:color")
+tracks/0/path = NodePath("ScreenFlash:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("ScreenFlash:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("ScreenFlash:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
-}
-
-[sub_resource type="Animation" id=7]
-resource_name = "Flash"
-length = 0.4
-tracks/0/type = "value"
-tracks/0/path = NodePath("UI/CanvasModulateUI:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 0.419608, 0.419608, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("ScreenFlash:color")
@@ -165,10 +125,50 @@ tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0, 0, 0, 1 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("UI/CanvasModulateUI:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "Flash"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/path = NodePath("ScreenFlash:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
 "times": PoolRealArray( 0, 0.4 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.388235 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("UI/CanvasModulateUI:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.4 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.505882, 0.505882, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="Game" type="Node2D"]
@@ -176,11 +176,6 @@ position = Vector2( 0, 1 )
 script = ExtResource( 19 )
 
 [node name="UI" type="CanvasLayer" parent="."]
-
-[node name="CanvasModulateUI" type="CanvasModulate" parent="UI"]
-modulate = Color( 0, 0, 0, 1 )
-position = Vector2( 0, 1 )
-z_index = -4096
 
 [node name="LM" type="TouchScreenButton" parent="UI"]
 pause_mode = 1
@@ -427,6 +422,17 @@ custom_fonts/font = SubResource( 17 )
 text = "DELTA ONE HEADS-UP DISPLAY"
 align = 2
 
+[node name="ScoreCounter" type="Label" parent="UI/HUD"]
+margin_left = 14.0
+margin_top = 486.0
+margin_right = 205.0
+margin_bottom = 537.0
+custom_colors/font_color = Color( 0, 0.952941, 1, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Score:"
+script = ExtResource( 3 )
+prefix = "Score: "
+
 [node name="CanvasModulateUI" type="CanvasModulate" parent="UI"]
 modulate = Color( 0, 0, 0, 1 )
 position = Vector2( 0, 1 )
@@ -516,13 +522,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -118.0
-margin_top = 43.0
-margin_right = 110.0
-margin_bottom = 80.0
+margin_left = -140.0
+margin_top = 33.0
+margin_right = 140.0
+margin_bottom = 70.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 20 )
-text = "[+] to exit game"
+text = "[Start] to exit game"
 align = 2
 
 [node name="ShipInfo" type="Label" parent="UI/Pause"]
@@ -538,16 +544,6 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_fonts/font = SubResource( 19 )
 text = "PAUSED"
 align = 2
-[node name="ScoreCounter" type="Label" parent="UI/HUD"]
-margin_left = 14.0
-margin_top = 486.0
-margin_right = 205.0
-margin_bottom = 537.0
-custom_colors/font_color = Color( 0, 0.952941, 1, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Score:"
-script = ExtResource( 3 )
-prefix = "Score: "
 
 [node name="Delta1" type="Area2D" parent="." groups=["player"]]
 position = Vector2( 498, 284 )
