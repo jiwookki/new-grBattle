@@ -15,7 +15,7 @@ outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 36
+size = 50
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -61,30 +61,35 @@ tracks/0/keys = {
 extents = Vector2( 960, 544 )
 
 [node name="Control" type="Control"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_top = -272.0
-margin_right = 960.0
-margin_bottom = 272.0
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [node name="Backdrop" type="Sprite" parent="."]
-position = Vector2( 223, 281 )
-scale = Vector2( 0.534722, 0.518056 )
+position = Vector2( 270, 374 )
+scale = Vector2( 0.7, 0.7 )
 texture = ExtResource( 4 )
 
 [node name="Title" type="Label" parent="."]
-margin_left = 350.0
-margin_top = 13.0
-margin_right = 636.0
-margin_bottom = 78.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -145.0
+margin_top = -338.0
+margin_right = 141.0
+margin_bottom = -273.0
 custom_fonts/font = SubResource( 1 )
 text = "How to play"
 
 [node name="Title2" type="Label" parent="."]
-margin_left = 440.0
-margin_top = 101.0
-margin_right = 944.0
-margin_bottom = 378.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -93.0
+margin_top = -250.0
+margin_right = 699.0
+margin_bottom = 153.0
 rect_pivot_offset = Vector2( 197, 129 )
 custom_fonts/font = SubResource( 3 )
 text = "Use D-Pad or left stick to move 
@@ -96,10 +101,14 @@ but you cannot move if your fuel
 tanks run dry."
 
 [node name="Title3" type="Label" parent="."]
-margin_left = 441.0
-margin_top = 393.0
-margin_right = 889.0
-margin_bottom = 554.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -97.0
+margin_top = 133.0
+margin_right = 543.0
+margin_bottom = 294.0
 rect_scale = Vector2( 0.997092, 1.00242 )
 rect_pivot_offset = Vector2( 197, 129 )
 custom_fonts/font = SubResource( 3 )
@@ -108,14 +117,13 @@ and avoid the falling
 asteroids. Aim for a high score."
 
 [node name="Start" type="Label" parent="."]
-anchor_left = 0.59423
-anchor_top = 0.5
-anchor_right = 603.039
-anchor_bottom = 0.5
-margin_left = -514.461
-margin_top = 207.0
-margin_right = -578536.0
-margin_bottom = 256.0
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -162.5
+margin_top = -49.0
+margin_right = 162.5
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Press x or touch to start"
@@ -134,7 +142,7 @@ position = Vector2( 141, 194 )
 texture = ExtResource( 6 )
 
 [node name="Delta12" type="Sprite" parent="AnimationPlayer"]
-position = Vector2( 220, 357 )
+position = Vector2( 272, 436 )
 texture = ExtResource( 2 )
 script = ExtResource( 7 )
 viz_displacement = 45

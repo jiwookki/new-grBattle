@@ -6,7 +6,7 @@
 [ext_resource path="res://audio/8B.mp3" type="AudioStream" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 48
+size = 96
 font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
@@ -30,10 +30,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -319.0
-margin_top = -222.0
-margin_right = 319.0
-margin_bottom = 42.0
+margin_left = -466.0
+margin_top = -268.0
+margin_right = 172.0
+margin_bottom = -4.0
+rect_scale = Vector2( 1.4, 1.4 )
 texture = ExtResource( 2 )
 
 [node name="Title" type="Label" parent="."]
@@ -41,10 +42,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -160.0
-margin_top = 48.0
-margin_right = 160.0
-margin_bottom = 97.0
+margin_left = -304.0
+margin_top = 115.0
+margin_right = 304.0
+margin_bottom = 212.0
 custom_fonts/font = SubResource( 1 )
 text = "Gamma Ray Battle"
 
@@ -57,17 +58,17 @@ margin_left = -225.0
 margin_top = -49.0
 margin_right = 225.0
 custom_fonts/font = SubResource( 3 )
-text = "Copyright (c) 2024 Jiwoo Lee Built 05.08.2024"
+text = "Copyright (c) 2025 Jiwoo Lee Built 06.07.2025"
 
 [node name="Start" type="Label" parent="."]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -162.5
-margin_top = 128.0
-margin_right = 162.5
-margin_bottom = 177.0
+margin_left = -162.0
+margin_top = 235.0
+margin_right = 163.0
+margin_bottom = 284.0
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Press x or touch to start"
