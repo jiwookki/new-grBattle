@@ -42,28 +42,28 @@ font_data = ExtResource( 1 )
 [node name="ScoreModal" type="Node2D"]
 
 [node name="HighScore" type="Label" parent="."]
-margin_left = 354.0
-margin_top = 276.0
-margin_right = 639.0
-margin_bottom = 331.0
+margin_left = 511.0
+margin_top = 310.0
+margin_right = 796.0
+margin_bottom = 365.0
 rect_pivot_offset = Vector2( -801, -560 )
 custom_colors/font_color = Color( 1, 0.984314, 0.0431373, 1 )
 custom_fonts/font = SubResource( 5 )
 text = "High score:"
 
 [node name="Title2" type="Label" parent="."]
-margin_left = 353.0
-margin_top = 221.0
-margin_right = 638.0
-margin_bottom = 276.0
+margin_left = 510.0
+margin_top = 255.0
+margin_right = 795.0
+margin_bottom = 310.0
 custom_fonts/font = SubResource( 3 )
 text = "Your score was "
 
 [node name="ScoreDisplay" type="Label" parent="."]
-margin_left = 632.0
-margin_top = 224.0
-margin_right = 708.0
-margin_bottom = 325.0
+margin_left = 789.0
+margin_top = 258.0
+margin_right = 865.0
+margin_bottom = 359.0
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "0000
@@ -73,7 +73,7 @@ high_score_node = NodePath("../HighScore")
 date_time_node = NodePath("../datetime")
 
 [node name="Delta11" type="Sprite" parent="."]
-position = Vector2( 295, 291 )
+position = Vector2( 452, 325 )
 texture = ExtResource( 3 )
 
 [node name="Delta1Spinner" type="AnimationPlayer" parent="."]
@@ -86,10 +86,10 @@ stream = ExtResource( 4 )
 autoplay = true
 
 [node name="datetime" type="Label" parent="."]
-margin_left = 353.0
-margin_top = 324.0
-margin_right = 638.0
-margin_bottom = 379.0
+margin_left = 510.0
+margin_top = 358.0
+margin_right = 795.0
+margin_bottom = 413.0
 custom_colors/font_color = Color( 0.509804, 0.509804, 0.509804, 1 )
 custom_fonts/font = SubResource( 6 )
 text = "date and time"

@@ -19,7 +19,7 @@ font_data = ExtResource( 1 )
 resource_name = "Game Over"
 tracks/0/type = "value"
 tracks/0/path = NodePath("Title:margin_left")
-tracks/0/interp = 1
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ -300, 350 ]
+"values": [ -300, 500 ]
 }
 
 [sub_resource type="Animation" id=6]
@@ -53,7 +53,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Title" type="Label" parent="."]
-margin_left = -300.0
+margin_left = 500.0
 margin_top = 130.0
 margin_right = 562.0
 margin_bottom = 195.0
@@ -61,13 +61,13 @@ custom_fonts/font = SubResource( 1 )
 text = "Game Over"
 
 [node name="Start" type="Label" parent="."]
-margin_left = 95.0
-margin_top = 391.0
-margin_right = 912.0
-margin_bottom = 440.0
+margin_left = 324.0
+margin_top = 539.0
+margin_right = 913.0
+margin_bottom = 588.0
 custom_colors/font_color = Color( 0.682353, 1, 0.705882, 1 )
 custom_fonts/font = SubResource( 2 )
-text = "Press Space or x to go back to main menu"
+text = "Press [+] to go back to main menu"
 script = ExtResource( 3 )
 game_over_display = ExtResource( 2 )
 
@@ -80,7 +80,7 @@ autoplay = "FadeOut"
 anims/FadeOut = SubResource( 6 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="FadeIn"]
-color = Color( 0, 0, 0, 1 )
+visible = false
 
 [node name="TouchScreenButton" type="TouchScreenButton" parent="."]
 shape = SubResource( 7 )
