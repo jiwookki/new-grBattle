@@ -459,7 +459,6 @@ polygon = PoolVector2Array( -2, -10, -7.66666, -1, -10.3, 7.5, 0, 9, 10.3, 7.5, 
 [node name="Sprite" type="AnimatedSprite" parent="Delta1"]
 scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 6 )
-frame = 1
 playing = true
 
 [node name="DashPlayer" type="AudioStreamPlayer" parent="Delta1"]
@@ -525,9 +524,9 @@ color = Color( 1, 1, 1, 0 )
 [connection signal="area_entered" from="Delta1" to="Delta1/Health" method="_on_Delta1_area_entered"]
 [connection signal="finish_reloading" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoBar" method="_finish_reloading"]
 [connection signal="reloading" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoBar" method="_on_Gun_reloading"]
-[connection signal="update_ammo_count" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoDisp" method="on_update_value"]
 [connection signal="update_ammo_count" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoBar" method="_update_value"]
-[connection signal="on_health_change" from="Delta1/Health" to="UI/HUD/ScoreCounter/Panel/InfosPanel/HealthDisp" method="on_update_value"]
+[connection signal="update_ammo_count" from="Delta1/Gun" to="UI/HUD/ScoreCounter/Panel/InfosPanel/AmmoDisp" method="on_update_value"]
 [connection signal="on_health_change" from="Delta1/Health" to="UI/HUD/ScoreCounter/Panel/InfosPanel/HealthBar" method="_update_value"]
+[connection signal="on_health_change" from="Delta1/Health" to="UI/HUD/ScoreCounter/Panel/InfosPanel/HealthDisp" method="on_update_value"]
 [connection signal="on_player_damage" from="Delta1/Health" to="Flashbang" method="_flash"]
 [connection signal="animation_finished" from="FadeOut" to="." method="faded_out"]
